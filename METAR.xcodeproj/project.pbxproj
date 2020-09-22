@@ -8,18 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C6A2517DC310068BDF7 /* METARApp.swift */; };
-		71132C6D2517DC310068BDF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C6C2517DC310068BDF7 /* ContentView.swift */; };
 		71132C6F2517DC330068BDF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C6E2517DC330068BDF7 /* Assets.xcassets */; };
 		71132C722517DC330068BDF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C712517DC330068BDF7 /* Preview Assets.xcassets */; };
+		71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C7A2517DC6D0068BDF7 /* AppView.swift */; };
+		71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C7D2517DC860068BDF7 /* AppModel.swift */; };
+		71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C832517DCAF0068BDF7 /* StationInfo.swift */; };
+		71132C8D2517DE870068BDF7 /* AviationWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C8C2517DE870068BDF7 /* AviationWeather.swift */; };
+		71132C8E2517DE870068BDF7 /* METAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C8B2517DE870068BDF7 /* METAR.swift */; };
+		71132CA325181EFA0068BDF7 /* METARList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA225181EFA0068BDF7 /* METARList.swift */; };
+		71132CA625181F150068BDF7 /* METARRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA525181F150068BDF7 /* METARRow.swift */; };
+		71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA825182B0B0068BDF7 /* AirportDetailView.swift */; };
+		71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */; };
+		71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB1251872A20068BDF7 /* SearchBar.swift */; };
+		71132CB625197C860068BDF7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB525197C850068BDF7 /* Station.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		71132C672517DC310068BDF7 /* METAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = METAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71132C6A2517DC310068BDF7 /* METARApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARApp.swift; sourceTree = "<group>"; };
-		71132C6C2517DC310068BDF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		71132C6E2517DC330068BDF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71132C712517DC330068BDF7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		71132C732517DC330068BDF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71132C7A2517DC6D0068BDF7 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		71132C7D2517DC860068BDF7 /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		71132C832517DCAF0068BDF7 /* StationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationInfo.swift; sourceTree = "<group>"; };
+		71132C8B2517DE870068BDF7 /* METAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METAR.swift; sourceTree = "<group>"; };
+		71132C8C2517DE870068BDF7 /* AviationWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AviationWeather.swift; sourceTree = "<group>"; };
+		71132CA225181EFA0068BDF7 /* METARList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARList.swift; sourceTree = "<group>"; };
+		71132CA525181F150068BDF7 /* METARRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARRow.swift; sourceTree = "<group>"; };
+		71132CA825182B0B0068BDF7 /* AirportDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDetailView.swift; sourceTree = "<group>"; };
+		71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAirportSheet.swift; sourceTree = "<group>"; };
+		71132CB1251872A20068BDF7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		71132CB525197C850068BDF7 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +72,17 @@
 		71132C692517DC310068BDF7 /* METAR */ = {
 			isa = PBXGroup;
 			children = (
+				71132C922517DEF00068BDF7 /* AviationWeatherAPI */,
 				71132C6A2517DC310068BDF7 /* METARApp.swift */,
-				71132C6C2517DC310068BDF7 /* ContentView.swift */,
+				71132C7D2517DC860068BDF7 /* AppModel.swift */,
+				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
+				71132CA225181EFA0068BDF7 /* METARList.swift */,
+				71132CA525181F150068BDF7 /* METARRow.swift */,
+				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
+				71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */,
+				71132CB1251872A20068BDF7 /* SearchBar.swift */,
+				71132CB525197C850068BDF7 /* Station.swift */,
+				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
 				71132C6E2517DC330068BDF7 /* Assets.xcassets */,
 				71132C732517DC330068BDF7 /* Info.plist */,
 				71132C702517DC330068BDF7 /* Preview Content */,
@@ -67,6 +96,15 @@
 				71132C712517DC330068BDF7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71132C922517DEF00068BDF7 /* AviationWeatherAPI */ = {
+			isa = PBXGroup;
+			children = (
+				71132C8B2517DE870068BDF7 /* METAR.swift */,
+				71132C8C2517DE870068BDF7 /* AviationWeather.swift */,
+			);
+			path = AviationWeatherAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +176,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71132C6D2517DC310068BDF7 /* ContentView.swift in Sources */,
+				71132C8E2517DE870068BDF7 /* METAR.swift in Sources */,
+				71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */,
+				71132C8D2517DE870068BDF7 /* AviationWeather.swift in Sources */,
+				71132CA625181F150068BDF7 /* METARRow.swift in Sources */,
+				71132CA325181EFA0068BDF7 /* METARList.swift in Sources */,
+				71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */,
+				71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */,
+				71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */,
 				71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */,
+				71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */,
+				71132CB625197C860068BDF7 /* Station.swift in Sources */,
+				71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +317,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"METAR/Preview Content\"";
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = METAR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -276,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.METAR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -290,6 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"METAR/Preview Content\"";
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = METAR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -297,7 +347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.METAR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

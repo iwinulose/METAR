@@ -1,0 +1,25 @@
+//
+//  METARDetailView.swift
+//  METAR
+//
+//  Created by Charles Duyk on 9/20/20.
+//
+
+import SwiftUI
+
+struct AirportDetailView: View {
+    let stationInfo: StationInfo
+
+    var body: some View {
+        Text("Hello " + stationInfo.station.id)
+    }
+}
+
+struct AirportDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        var m = METAR()
+        m.stationID = "KSTS"
+        m.rawText = "KSTS 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
+        return AirportDetailView(stationInfo:StationInfo(station:Station(id:"KSTS"), METAR:m))
+    }
+}
