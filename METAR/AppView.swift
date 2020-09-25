@@ -10,8 +10,8 @@ import SwiftUI
 
 struct AppView: View {
     @ObservedObject var model: AppModel
-    @State var showAddStationSheet = false
-    @State var selectedStation: Station?
+    @State private var showAddStationSheet = false
+    @State private var selectedStation: Station?
     
     var body: some View {
         NavigationView {
@@ -46,7 +46,7 @@ struct AppView: View {
         })
     }
     
-    func handleAddStation() {
+    private func handleAddStation() {
         guard let station = self.selectedStation else {
             return
         }

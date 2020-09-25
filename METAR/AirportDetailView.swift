@@ -6,20 +6,146 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct AirportDetailView: View {
-    let stationInfo: StationInfo
-
+    @State var info: StationInfo
+    
     var body: some View {
-        Text("Hello " + stationInfo.station.id)
+        VStack (alignment:.leading , spacing: 0.0) {
+            List {
+                Section {
+                    TwoItemRow(title:"Altimeter", value:formatValue(info.METAR.altimeter, unit:" inHg"))
+                    TwoItemRow(title:"Wind", value:formatWind(speed:info.METAR.windSpeed, direction:info.METAR.windDirection, gust:info.METAR.windGust))
+                    TwoItemRow(title:"Visibility", value:formatValue(info.METAR.visibility, unit:" mi"))
+                    TwoItemRow(title:"Temperature", value:formatValue(info.METAR.temperature, unit:" °C"))
+                    TwoItemRow(title:"Flight category", value:info.METAR.flightCategory ?? "--")
+//                    TwoItemRow(title:"Density Altitude", value:"\(calculateDensityAltitude(info.METAR.temperature, info.METAR.) ?? "--")"
+                }
+                Section( header: Text("Full METAR")) {
+                    Text(info.METAR.rawText ?? "--")
+                }
+                Section (footer: Text(formatObservationTimeFooter(info.METAR.observationTime))) {
+                    TwoItemRow(title:"Observation time (Local)", value:formatDate(info.METAR.observationTime, timeZone:TimeZone.autoupdatingCurrent))
+                    TwoItemRow(title:"Observation time (Zulu)", value:formatDate(info.METAR.observationTime, timeZone:TimeZone(secondsFromGMT: 0)!)) // Technically not UTC.
+                }
+            }.listStyle(GroupedListStyle())
+        }
+        .navigationBarTitle(info.station.id)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: { self.refreshData() }) {
+            Image(systemName: "arrow.clockwise")
+        })
+        .onAppear() {
+            self.refreshData()
+        }
+    }
+    
+    func refreshData() {
+        var request = METAR.Request(self.info.station.id)
+        request.mostRecentForEachStation = true
+        request.hoursBeforeNow = 12
+        AviationWeather.fetch(request) { (response, err) in
+            if let metars = response?.metars {
+                if metars.count > 0 {
+                    let metar = metars[0]
+                    if metar.stationID == self.info.station.id {
+                        DispatchQueue.main.async {
+                            self.info = StationInfo(station:self.info.station, METAR:metars[0])
+                        }
+                    }
+                    else {
+                        //FIXME: show error
+                        print("Fetched METAR for wrong station")
+                    }
+                }
+            }
+            else if let err = err {
+                //FIXME: Show this error in the app
+                print(err)
+            }
+            else {
+                //FIXME: This should be an alert since it shouldn't happen.
+                print("Wat")
+            }
+        }
     }
 }
+
+fileprivate func formatWind(speed:Int?, direction:Int?, gust:Int?) -> String {
+    let formattedSpeed = formatValue(speed, unit:"kts")
+    let formattedDirection = formatValue(direction, unit:"°")
+    var formattedGust = ""
+    if let gust = gust {
+        if gust > 0 {
+            formattedGust = " (G \(formatValue(gust, unit:"kts")))"
+        }
+    }
+    return "\(formattedDirection) @ \(formattedSpeed)\(formattedGust)"
+}
+
+//FIXME: there's probably a way to use generics here
+fileprivate func formatValue(_ value: Int?, unit: String = "") -> String {
+    var formattedValue = "--"
+    var suffix = ""
+    
+    if let value = value {
+        formattedValue = String(format:"%d", value)
+    }
+    
+    if unit != "" {
+        suffix = "\(unit)"
+    }
+    
+    return formattedValue + suffix
+}
+
+fileprivate func formatValue(_ value: Double?, unit: String = "", precision: Int = 2) -> String {
+    var formattedValue = "--"
+    var suffix = ""
+    
+    if let value = value {
+        formattedValue = String(format:"%.0\(precision)f", value)
+    }
+    
+    if unit != "" {
+        suffix = "\(unit)"
+    }
+    
+    return formattedValue + suffix
+}
+
+fileprivate func formatDate(_ date: Date?, timeZone: TimeZone) -> String {
+    guard let date = date else {
+        return "--:--"
+    }
+    
+    let df = DateFormatter()
+    df.timeZone = timeZone
+    df.dateFormat = "HH:mm"
+    return df.string(from: date)
+}
+
+fileprivate func formatObservationTimeFooter(_ date: Date?) -> String {
+    guard let date = date else {
+        return ""
+    }
+    
+    let minutes: Int = -Int(date.timeIntervalSinceNow/60)
+    let unitString = (minutes == 1) ? "minute" : "minutes"
+    
+    return minutes == 0 ? "METAR is fresh" : "METAR is \(minutes) \(unitString) old"
+}
+
+//fileprivate func calculateDensityAltitude() -> Double? {
+//    guard
+//}
 
 struct AirportDetailView_Previews: PreviewProvider {
     static var previews: some View {
         var m = METAR()
         m.stationID = "KSTS"
         m.rawText = "KSTS 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
-        return AirportDetailView(stationInfo:StationInfo(station:Station(id:"KSTS"), METAR:m))
+        return AirportDetailView(info:StationInfo(station:Station(id:"KSTS"), METAR:m))
     }
 }

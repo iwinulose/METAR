@@ -17,17 +17,25 @@ struct AddAirportSheet: View {
         NavigationView {
             VStack {
                 SearchBar(text:$searchText).padding(.top, 10)
-                List {
-                    ForEach(self.filterStations(searchText)) { station in
-                        HStack {
-                            Text(station.id + " - " + station.name)
-                            Spacer()
+                    .disableAutocorrection(true)
+                if searchText.count < 2 {
+                    Spacer()
+                    Text("Search for airport by ICAO identifier or city").multilineTextAlignment(.center)
+                    Spacer()
+                }
+                else {
+                    List {
+                        ForEach(self.filterStations(searchText)) { station in
+                            HStack {
+                                Text(station.id + " - " + station.name)
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture(count: 1, perform: {
+                                self.selection = station
+                                self.dismiss()
+                            })
                         }
-                        .contentShape(Rectangle())
-                        .onTapGesture(count: 1, perform: {
-                            self.selection = station
-                            self.dismiss()
-                        })
                     }
                 }
             }

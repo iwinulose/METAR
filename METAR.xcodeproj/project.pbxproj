@@ -21,6 +21,7 @@
 		71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */; };
 		71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB1251872A20068BDF7 /* SearchBar.swift */; };
 		71132CB625197C860068BDF7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB525197C850068BDF7 /* Station.swift */; };
+		71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306572251D718600CF33A0 /* TwoItemRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAirportSheet.swift; sourceTree = "<group>"; };
 		71132CB1251872A20068BDF7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		71132CB525197C850068BDF7 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		71306572251D718600CF33A0 /* TwoItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoItemRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				71132CA525181F150068BDF7 /* METARRow.swift */,
 				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
 				71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */,
+				71306572251D718600CF33A0 /* TwoItemRow.swift */,
 				71132CB1251872A20068BDF7 /* SearchBar.swift */,
 				71132CB525197C850068BDF7 /* Station.swift */,
 				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */,
 				71132C8E2517DE870068BDF7 /* METAR.swift in Sources */,
 				71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */,
 				71132C8D2517DE870068BDF7 /* AviationWeather.swift in Sources */,

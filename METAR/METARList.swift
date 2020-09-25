@@ -15,7 +15,7 @@ struct METARList: View {
     var body: some View {
         List {
             ForEach(stationInfo) { info in
-                NavigationLink(destination:AirportDetailView(stationInfo:info)) {
+                NavigationLink(destination:AirportDetailView(info:info)) {
                     METARRow(info:info)
                 }
             }

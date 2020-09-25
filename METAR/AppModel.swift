@@ -13,8 +13,8 @@ class AppModel: ObservableObject {
     @Published private(set) var stationInfo: [StationInfo] = []
 //    @Published var error: Error?
 
-    var dataSource: AppModelDataSource
-    lazy private(set) var allStations: [Station] = try! Station.decodeJSONArray(NSDataAsset(name:"Stations")!.data)
+    private var dataSource: AppModelDataSource
+    private(set) lazy var allStations: [Station] = try! Station.decodeJSONArray(NSDataAsset(name:"Stations")!.data)
 
     var stationIDs: [String] {
         get {
@@ -26,6 +26,7 @@ class AppModel: ObservableObject {
             self.fetchStationData()
         }
     }
+    
     var metars: [METAR] = [] {
         didSet {
             self.updateStationInfo()

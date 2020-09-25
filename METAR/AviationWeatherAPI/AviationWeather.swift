@@ -64,4 +64,24 @@ struct AviationWeather {
         }
         task.resume()
     }
+    
+    // Per Wikipedia: https://en.wikipedia.org/wiki/Density_altitude#The_National_Weather_Service_(NWS)_Formula
+    // FIXME: Convert to a function when converting to Framework
+    public static func approximateDensityAltitude(tempF: Double, pressureInHg: Double) -> Double {
+        let altitudeCoefficientFt = 145442.16
+        let pressureTemperatureConversionCoefficient = 17.326
+        let temperatureDenominatorConstant = 459.67
+        let exponent = 0.235
+        let numerator = pressureTemperatureConversionCoefficient * pressureInHg
+        let denominator = temperatureDenominatorConstant + tempF
+        let fraction = numerator/denominator
+        let exponentiationResult = pow(fraction, exponent)
+        return altitudeCoefficientFt * (1.0 - exponentiationResult)
+    }
+    
+    public static func celsiusToFarenheit(_ celsius: Double) -> Double {
+        return 1.8 * celsius + 32
+    }
+
 }
+
