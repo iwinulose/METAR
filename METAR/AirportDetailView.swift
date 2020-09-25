@@ -11,18 +11,36 @@ import MapKit
 struct AirportDetailView: View {
     @State var info: StationInfo
     
+    
     var body: some View {
         VStack (alignment:.leading , spacing: 0.0) {
             List {
                 Section {
-                    TwoItemRow(title:"Altimeter", value:formatValue(info.METAR.altimeter, unit:" inHg"))
+                    TwoItemRow(title:"Flight category", value:info.METAR.flightCategory ?? "--")
+                }
+                Section {
                     TwoItemRow(title:"Wind", value:formatWind(speed:info.METAR.windSpeed, direction:info.METAR.windDirection, gust:info.METAR.windGust))
                     TwoItemRow(title:"Visibility", value:formatValue(info.METAR.visibility, unit:" mi"))
+                    TwoItemRow(title:"Altimeter", value:formatValue(info.METAR.altimeter, unit:" inHg"))
                     TwoItemRow(title:"Temperature", value:formatValue(info.METAR.temperature, unit:" °C"))
-                    TwoItemRow(title:"Flight category", value:info.METAR.flightCategory ?? "--")
+                    TwoItemRow(title:"Dew point", value:formatValue(info.METAR.dewpoint, unit:" °C"))
+//                    TwoItemRow(title:"Weather", value:info.METAR.weatherString ?? "")
 //                    TwoItemRow(title:"Density Altitude", value:"\(calculateDensityAltitude(info.METAR.temperature, info.METAR.) ?? "--")"
                 }
-                Section( header: Text("Full METAR")) {
+                if !self.info.METAR.skyCondition.isEmpty {
+                    Section (header:Text("Sky conditions")) {
+                        Section {
+                            ForEach (0 ..< self.info.METAR.skyCondition.count) { index -> TwoItemRow in
+                                let condition = self.info.METAR.skyCondition[index]
+                                let title = condition.coverage.description()
+                                let altitudeString = condition.altitude != nil ? formatValue(condition.altitude, unit:"ft") : ""
+                                return TwoItemRow(title:title, value:altitudeString)
+                            }
+                        }
+                    }
+                }
+
+                Section(header: Text("Full METAR")) {
                     Text(info.METAR.rawText ?? "--")
                 }
                 Section (footer: Text(formatObservationTimeFooter(info.METAR.observationTime))) {

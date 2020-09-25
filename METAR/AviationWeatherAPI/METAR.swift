@@ -9,20 +9,49 @@
 
 import Foundation
 
-//enum SkyCondition: String {
-//    case broken = "BKN"
-//}
 
-extension Date {
-    init?(ISO8601String string:String) {
-        guard let date = ISO8601DateFormatter().date(from: string) else {
-            return nil
-        }
-        self = date
-    }
+struct SkyCondition {
+    let altitude: Int?
+    let coverage: SkyCoverage
     
-    func ISO8601String(timeZone:TimeZone = TimeZone(secondsFromGMT: 0)!) -> String {
-        return ISO8601DateFormatter.string(from: self, timeZone: timeZone, formatOptions:.withInternetDateTime)
+    enum XMLAttribute: String {
+        case altitude = "cloud_base_ft_agl"
+        case skyCover = "sky_cover"
+    }
+    // Cloud coverage is reported by the number of 'oktas' (eighths) of the sky that is occupied by cloud.
+    // https://en.wikipedia.org/wiki/METAR#Cloud_reporting
+    enum SkyCoverage: String {
+        case skc = "SKC" // No cloud/sky clear. In US, indicates human observation.
+        case clr = "CLR" // No clouds below 12,000ft. In US, indicates the station is at least partially automated.
+        case cavoc = "CAVOC" // Ceiling and visibility OK
+        case few = "FEW" // 1-2 oktas
+        case sct = "SCT" // 3-4 oktas
+        case bkn = "BKN" // 5-7 oktas
+        case ovc = "OVC" // 8 oktas
+        case ovx = "OVX" // Sky is obscured but no clouds reported
+
+        func description() -> String {
+            let ret: String
+            switch self {
+            case .skc:
+                ret = "Sky clear"
+            case .clr:
+                ret = "Clear"
+            case .cavoc:
+                ret = "Ceiling/visibility OK"
+            case .few:
+                ret = "Few"
+            case .sct:
+                ret = "Scattered"
+            case .bkn:
+                ret = "Broken"
+            case .ovc:
+                ret = "Overcast"
+            case .ovx:
+                ret = "Obscured w/o cloud"
+            }
+            return ret
+        }
     }
 }
 
@@ -45,11 +74,12 @@ struct METAR {
             return 0.02953 * seaLevelPressureMb
         }
     }
-//    var skyCondition: [SkyCondition]
+    var skyCondition: [SkyCondition] = []
     var snowInches: Double?
     var stationID: String?
     var temperature: Double?
     var visibility: Double?
+    var weatherString: String?
     var windDirection: Int?
     var windSpeed: Int?
     var windGust: Int?
@@ -76,6 +106,7 @@ struct METAR {
         case temperature = "temp_c"
         case visibility = "visibility_statute_mi"
         case warning = "warning"
+        case weatherString = "wx_string"
         case windDirection = "wind_dir_degrees"
         case windSpeed = "wind_speed_kt"
         case windGust = "wind_gust_kt"
@@ -124,6 +155,8 @@ struct METAR {
             self.visibility = doubleValue
         case .warning:
             print("Shouldn't be handling warning here")
+        case .weatherString:
+            self.weatherString =  value
         case .windDirection:
             self.windDirection = intValue
         case .windSpeed:
@@ -264,7 +297,7 @@ struct METAR {
                     self.currentMETAR = METAR()
                     self.currentElement = nil
                 case .skyCondition:
-                    print("TODO: Handle SkyCondition")
+                    self.addSkyCondition(attributeDict)
                 default:
                     self.currentElement = element
                 }
@@ -301,6 +334,34 @@ struct METAR {
             func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
                 self.parseError = parseError
             }
+
+            func addSkyCondition(_ attributeDict:[String: String]) {
+                let rawAltitude = attributeDict[SkyCondition.XMLAttribute.altitude.rawValue]
+                let rawCoverage = attributeDict[SkyCondition.XMLAttribute.skyCover.rawValue]
+
+                let altitude = rawAltitude != nil ? Int(rawAltitude!) : nil
+                let coverage = rawCoverage != nil ? SkyCondition.SkyCoverage(rawValue: rawCoverage!) : nil
+
+                if let coverage = coverage {
+                    self.currentMETAR?.skyCondition.append(SkyCondition(altitude: altitude, coverage: coverage))
+                }
+                else {
+                    print("Unknown sky coverage \(String(describing: rawCoverage))")
+                }
+            }
         }
+    }
+}
+
+extension Date {
+    init?(ISO8601String string:String) {
+        guard let date = ISO8601DateFormatter().date(from: string) else {
+            return nil
+        }
+        self = date
+    }
+
+    func ISO8601String(timeZone:TimeZone = TimeZone(secondsFromGMT: 0)!) -> String {
+        return ISO8601DateFormatter.string(from: self, timeZone: timeZone, formatOptions:.withInternetDateTime)
     }
 }
