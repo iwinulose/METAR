@@ -6,11 +6,27 @@
 //
 
 import SwiftUI
-import MapKit
+import CoreSpotlight
+
+let kViewAirportDetailsActivityType = "com.duyk.GetMETAR.ViewAirportDetails"
 
 struct AirportDetailView: View {
     @State var info: StationInfo
-    
+    var userActity: NSUserActivity {
+        get {
+            let stationID = self.info.id
+            let searchAttributes = CSSearchableItemAttributeSet()
+            searchAttributes.contentDescription = "Get METAR for \(stationID)"
+            let activity = NSUserActivity(activityType: kViewAirportDetailsActivityType)
+            activity.title = "\(stationID) METAR"
+            activity.suggestedInvocationPhrase = "Check \(stationID) weather"
+            activity.persistentIdentifier = NSUserActivityPersistentIdentifier(self.info.id)
+            activity.isEligibleForPrediction = true
+            activity.isEligibleForSearch = true
+            activity.contentAttributeSet = searchAttributes
+            return activity
+        }
+    }
     
     var body: some View {
         VStack (alignment:.leading , spacing: 0.0) {
@@ -22,8 +38,8 @@ struct AirportDetailView: View {
                     TwoItemRow(title:"Wind", value:formatWind(speed:info.METAR.windSpeed, direction:info.METAR.windDirection, gust:info.METAR.windGust))
                     TwoItemRow(title:"Visibility", value:formatValue(info.METAR.visibility, unit:" mi"))
                     TwoItemRow(title:"Altimeter", value:formatValue(info.METAR.altimeter, unit:" inHg"))
-                    TwoItemRow(title:"Temperature", value:formatValue(info.METAR.temperature, unit:" °C"))
-                    TwoItemRow(title:"Dew point", value:formatValue(info.METAR.dewpoint, unit:" °C"))
+                    TwoItemRow(title:"Temperature", value:formatValue(info.METAR.temperature, unit:" °C", precision:1))
+                    TwoItemRow(title:"Dew point", value:formatValue(info.METAR.dewpoint, unit:" °C", precision:1))
 //                    TwoItemRow(title:"Weather", value:info.METAR.weatherString ?? "")
 //                    TwoItemRow(title:"Density Altitude", value:"\(calculateDensityAltitude(info.METAR.temperature, info.METAR.) ?? "--")"
                 }
@@ -56,6 +72,10 @@ struct AirportDetailView: View {
         })
         .onAppear() {
             self.refreshData()
+            self.becomeCurrentActivity()
+        }
+        .onDisappear() {
+            self.resignCurrentActivity()
         }
     }
     
@@ -87,6 +107,14 @@ struct AirportDetailView: View {
                 print("Wat")
             }
         }
+    }
+        
+    func becomeCurrentActivity() {
+        // FIXME: Implement
+    }
+    
+    func resignCurrentActivity() {
+        // FIXME: Implement
     }
 }
 

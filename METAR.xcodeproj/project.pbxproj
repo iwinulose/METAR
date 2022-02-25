@@ -22,6 +22,7 @@
 		71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB1251872A20068BDF7 /* SearchBar.swift */; };
 		71132CB625197C860068BDF7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB525197C850068BDF7 /* Station.swift */; };
 		71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306572251D718600CF33A0 /* TwoItemRow.swift */; };
+		71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306576251F169D00CF33A0 /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		71132CB1251872A20068BDF7 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		71132CB525197C850068BDF7 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		71306572251D718600CF33A0 /* TwoItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoItemRow.swift; sourceTree = "<group>"; };
+		71306576251F169D00CF33A0 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				71132CB1251872A20068BDF7 /* SearchBar.swift */,
 				71132CB525197C850068BDF7 /* Station.swift */,
 				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
+				71306576251F169D00CF33A0 /* View+Extensions.swift */,
 				71132C6E2517DC330068BDF7 /* Assets.xcassets */,
 				71132C732517DC330068BDF7 /* Info.plist */,
 				71132C702517DC330068BDF7 /* Preview Content */,
@@ -189,6 +192,7 @@
 				71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */,
 				71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */,
 				71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */,
+				71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */,
 				71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */,
 				71132CB625197C860068BDF7 /* Station.swift in Sources */,
 				71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */,

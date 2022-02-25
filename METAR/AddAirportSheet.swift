@@ -31,10 +31,10 @@ struct AddAirportSheet: View {
                                 Spacer()
                             }
                             .contentShape(Rectangle())
-                            .onTapGesture(count: 1, perform: {
+                            .onTapGesture {
                                 self.selection = station
                                 self.dismiss()
-                            })
+                            }
                         }
                     }
                 }

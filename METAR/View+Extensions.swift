@@ -5,4 +5,10 @@
 //  Created by Charles Duyk on 9/25/20.
 //
 
-import Foundation
+import SwiftUI
+
+extension View {
+    public func eraseToAnyView() -> AnyView {
+        return AnyView(self)
+    }
+}

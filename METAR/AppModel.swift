@@ -50,10 +50,11 @@ class AppModel: ObservableObject {
             if let currentStationInfo = currentStationInfo {
                 newStation = currentStationInfo.station
             }
-            else if let station = self.allStations.first( where: { $0.id == id }) {
+            else if let station = self.getStation(id) {
                 newStation = station
             }
             else {
+                //FIXME: Inform user somehow
                 print("WARNING: No station known info for \(id)")
                 newStation = Station(id:id)
             }
@@ -97,6 +98,10 @@ class AppModel: ObservableObject {
                 print("Wat")
             }
         }
+    }
+    
+    func getStation(_ id:String) -> Station? {
+        return self.allStations.first( where: { $0.id == id })
     }
 }
 
