@@ -81,10 +81,12 @@ class AppModel: ObservableObject {
             return
         }
         
-        var request = Request()
-        request.stations.addStations(self.stationIDs)
-        request.mostRecentForEachStation = true
-        request.hoursBeforeNow = 12
+        var timeFrame = TimeFrame()
+        timeFrame.hoursBeforeNow = 12
+        timeFrame.mostRecentForEachStation = true
+        
+        var request = Request(type:.METAR, timeFrame: timeFrame)
+        request.stations.add(self.stationIDs)
         AviationWeather.fetch(request) { (response, err) in
             if let metars = response?.metars {
                 DispatchQueue.main.async {
