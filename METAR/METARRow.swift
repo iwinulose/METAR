@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import AviationWeather
+
 struct METARRow: View {
     let info: StationInfo
     

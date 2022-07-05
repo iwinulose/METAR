@@ -8,6 +8,8 @@
 import SwiftUI
 import CoreSpotlight
 
+import AviationWeather
+
 let kViewAirportDetailsActivityType = "com.duyk.GetMETAR.ViewAirportDetails"
 
 struct AirportDetailView: View {
@@ -80,9 +82,10 @@ struct AirportDetailView: View {
     }
     
     func refreshData() {
-        var request = METAR.Request(self.info.station.id)
-        request.mostRecentForEachStation = true
-        request.hoursBeforeNow = 12
+        let station = Stations(self.info.station.id)
+        let timeFrame = TimeFrame(hoursBeforeNow: 12, mostRecentForEachStation: true)
+        
+        let request = Request(type:.METAR, stations:station, timeFrame:timeFrame)
         AviationWeather.fetch(request) { (response, err) in
             if let metars = response?.metars {
                 if metars.count > 0 {

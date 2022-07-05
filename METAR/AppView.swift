@@ -10,6 +10,8 @@ import SwiftUI
 import CoreSpotlight
 import Intents
 
+import AviationWeather
+
 let kViewMyAirportsActivityType = "com.duyk.GetMETAR.ViewMyAirports"
 
 struct AppView: View {
@@ -26,7 +28,6 @@ struct AppView: View {
             }
         }
     }
-    @Environment(\.presentationMode) var presentationMode
 
     static let viewMyAirportsActivityType = "com.duyk.GetMETAR.ViewMyAirports"
     static let viewMyAirportsActivity: NSUserActivity = _createViewMyAirportsActivity()
@@ -79,17 +80,15 @@ struct AppView: View {
                     EmptyView()
                 }
             }
-            .navigationBarTitle("My Airports")
+            .navigationTitle("My Airports")
             .navigationBarItems(trailing:Button(action: { self.showAddStationSheet.toggle() },
                                                 label: { Text("Add") })
             )
         }
         .sheet(isPresented: self.$showAddStationSheet, onDismiss: { self.handleAddStation() }, content: {
-            AddAirportSheet(stations:self.model.allStations, selection:$selectedStation)
+            AddAirportSheet(stations:self.model.allStations, selection:self.$selectedStation)
         })
         .onContinueUserActivity(kViewMyAirportsActivityType) { activity in
-            print("Presentation mode: \(presentationMode)")
-            presentationMode.wrappedValue.dismiss()
         }
         .onContinueUserActivity(kViewAirportDetailsActivityType) { activity in
             

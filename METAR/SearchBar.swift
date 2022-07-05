@@ -13,10 +13,10 @@ struct SearchBar: View {
     
     var body: some View {
         HStack {
-            TextField("Search ...", text:$text)
+            TextField("Search ...", text:self.$text)
                 .padding(7)
                 .padding(.horizontal, 25)
-                .background(Color(.systemGray6))
+                .background(Color(.systemGray5))
                 .cornerRadius(8)
                 .overlay(HStack {
                     Image(systemName: "magnifyingglass")
@@ -48,6 +48,7 @@ struct SearchBar: View {
                 }
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
+                // FIXME: .animation is deprecated, but I can't figure out how to use withAnimation
                 .animation(.default)
             }
         }

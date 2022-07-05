@@ -7,14 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710394F927D5450200C3D618 /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710394F827D5450200C3D618 /* Stations.swift */; };
+		710394FB27D5456800C3D618 /* QueryItemProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710394FA27D5456800C3D618 /* QueryItemProviding.swift */; };
+		710394FD27D5495C00C3D618 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710394FC27D5495C00C3D618 /* TimeFrame.swift */; };
+		710B4FA727D3104100D88842 /* AviationWeather.docc in Sources */ = {isa = PBXBuildFile; fileRef = 710B4FA627D3104100D88842 /* AviationWeather.docc */; };
+		710B4FA827D3104100D88842 /* AviationWeather.h in Headers */ = {isa = PBXBuildFile; fileRef = 710B4FA527D3104100D88842 /* AviationWeather.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		710B4FAB27D3104100D88842 /* AviationWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710B4FA327D3104000D88842 /* AviationWeather.framework */; };
+		710B4FAC27D3104100D88842 /* AviationWeather.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 710B4FA327D3104000D88842 /* AviationWeather.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		710B4FB127D3105000D88842 /* AviationWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C8C2517DE870068BDF7 /* AviationWeather.swift */; };
+		710B4FB227D3105000D88842 /* METAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C8B2517DE870068BDF7 /* METAR.swift */; };
+		710B4FB327D3109700D88842 /* RawRepresentable+Comparisons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B4F9C27D08A3E00D88842 /* RawRepresentable+Comparisons.swift */; };
+		710B4FB527D311DC00D88842 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B4FB427D311DC00D88842 /* Logging.swift */; };
+		710B4FB727D32E0F00D88842 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B4FB627D32E0F00D88842 /* Client.swift */; };
+		710B4FB927D35ADC00D88842 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B4FB827D35ADC00D88842 /* Request.swift */; };
+		710B4FBD27D4032400D88842 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710B4FBC27D4032400D88842 /* Response.swift */; };
 		71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C6A2517DC310068BDF7 /* METARApp.swift */; };
 		71132C6F2517DC330068BDF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C6E2517DC330068BDF7 /* Assets.xcassets */; };
 		71132C722517DC330068BDF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C712517DC330068BDF7 /* Preview Assets.xcassets */; };
 		71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C7A2517DC6D0068BDF7 /* AppView.swift */; };
 		71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C7D2517DC860068BDF7 /* AppModel.swift */; };
 		71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C832517DCAF0068BDF7 /* StationInfo.swift */; };
-		71132C8D2517DE870068BDF7 /* AviationWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C8C2517DE870068BDF7 /* AviationWeather.swift */; };
-		71132C8E2517DE870068BDF7 /* METAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C8B2517DE870068BDF7 /* METAR.swift */; };
 		71132CA325181EFA0068BDF7 /* METARList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA225181EFA0068BDF7 /* METARList.swift */; };
 		71132CA625181F150068BDF7 /* METARRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA525181F150068BDF7 /* METARRow.swift */; };
 		71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA825182B0B0068BDF7 /* AirportDetailView.swift */; };
@@ -25,7 +37,42 @@
 		71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306576251F169D00CF33A0 /* View+Extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		710B4FA927D3104100D88842 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 710B4FA227D3104000D88842;
+			remoteInfo = AviationWeather;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		710B4FB027D3104100D88842 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				710B4FAC27D3104100D88842 /* AviationWeather.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		710394F827D5450200C3D618 /* Stations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
+		710394FA27D5456800C3D618 /* QueryItemProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryItemProviding.swift; sourceTree = "<group>"; };
+		710394FC27D5495C00C3D618 /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		710B4F9C27D08A3E00D88842 /* RawRepresentable+Comparisons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RawRepresentable+Comparisons.swift"; sourceTree = "<group>"; };
+		710B4FA327D3104000D88842 /* AviationWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AviationWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		710B4FA527D3104100D88842 /* AviationWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AviationWeather.h; sourceTree = "<group>"; };
+		710B4FA627D3104100D88842 /* AviationWeather.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AviationWeather.docc; sourceTree = "<group>"; };
+		710B4FB427D311DC00D88842 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		710B4FB627D32E0F00D88842 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		710B4FB827D35ADC00D88842 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		710B4FBC27D4032400D88842 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		71132C672517DC310068BDF7 /* METAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = METAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71132C6A2517DC310068BDF7 /* METARApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARApp.swift; sourceTree = "<group>"; };
 		71132C6E2517DC330068BDF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,20 +94,48 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		71132C642517DC310068BDF7 /* Frameworks */ = {
+		710B4FA027D3104000D88842 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		71132C642517DC310068BDF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				710B4FAB27D3104100D88842 /* AviationWeather.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		710B4FA427D3104100D88842 /* AviationWeather */ = {
+			isa = PBXGroup;
+			children = (
+				710B4FA527D3104100D88842 /* AviationWeather.h */,
+				71132C8C2517DE870068BDF7 /* AviationWeather.swift */,
+				710B4FB627D32E0F00D88842 /* Client.swift */,
+				710B4FB427D311DC00D88842 /* Logging.swift */,
+				71132C8B2517DE870068BDF7 /* METAR.swift */,
+				710394FA27D5456800C3D618 /* QueryItemProviding.swift */,
+				710B4FBC27D4032400D88842 /* Response.swift */,
+				710B4F9C27D08A3E00D88842 /* RawRepresentable+Comparisons.swift */,
+				710B4FB827D35ADC00D88842 /* Request.swift */,
+				710394F827D5450200C3D618 /* Stations.swift */,
+				710394FC27D5495C00C3D618 /* TimeFrame.swift */,
+				710B4FA627D3104100D88842 /* AviationWeather.docc */,
+			);
+			path = AviationWeather;
+			sourceTree = "<group>";
+		};
 		71132C5E2517DC300068BDF7 = {
 			isa = PBXGroup;
 			children = (
 				71132C692517DC310068BDF7 /* METAR */,
+				710B4FA427D3104100D88842 /* AviationWeather */,
 				71132C682517DC310068BDF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				71132C672517DC310068BDF7 /* METAR.app */,
+				710B4FA327D3104000D88842 /* AviationWeather.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,7 +152,6 @@
 		71132C692517DC310068BDF7 /* METAR */ = {
 			isa = PBXGroup;
 			children = (
-				71132C922517DEF00068BDF7 /* AviationWeatherAPI */,
 				71132C6A2517DC310068BDF7 /* METARApp.swift */,
 				71132C7D2517DC860068BDF7 /* AppModel.swift */,
 				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
@@ -104,18 +179,38 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		71132C922517DEF00068BDF7 /* AviationWeatherAPI */ = {
-			isa = PBXGroup;
-			children = (
-				71132C8B2517DE870068BDF7 /* METAR.swift */,
-				71132C8C2517DE870068BDF7 /* AviationWeather.swift */,
-			);
-			path = AviationWeatherAPI;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		710B4F9E27D3104000D88842 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				710B4FA827D3104100D88842 /* AviationWeather.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		710B4FA227D3104000D88842 /* AviationWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 710B4FAD27D3104100D88842 /* Build configuration list for PBXNativeTarget "AviationWeather" */;
+			buildPhases = (
+				710B4F9E27D3104000D88842 /* Headers */,
+				710B4F9F27D3104000D88842 /* Sources */,
+				710B4FA027D3104000D88842 /* Frameworks */,
+				710B4FA127D3104000D88842 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AviationWeather;
+			productName = AviationWeather;
+			productReference = 710B4FA327D3104000D88842 /* AviationWeather.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		71132C662517DC310068BDF7 /* METAR */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71132C762517DC330068BDF7 /* Build configuration list for PBXNativeTarget "METAR" */;
@@ -123,10 +218,12 @@
 				71132C632517DC310068BDF7 /* Sources */,
 				71132C642517DC310068BDF7 /* Frameworks */,
 				71132C652517DC310068BDF7 /* Resources */,
+				710B4FB027D3104100D88842 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				710B4FAA27D3104100D88842 /* PBXTargetDependency */,
 			);
 			name = METAR;
 			productName = METAR;
@@ -142,6 +239,9 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					710B4FA227D3104000D88842 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					71132C662517DC310068BDF7 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -161,11 +261,19 @@
 			projectRoot = "";
 			targets = (
 				71132C662517DC310068BDF7 /* METAR */,
+				710B4FA227D3104000D88842 /* AviationWeather */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		710B4FA127D3104000D88842 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71132C652517DC310068BDF7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,14 +286,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		710B4F9F27D3104000D88842 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				710B4FB327D3109700D88842 /* RawRepresentable+Comparisons.swift in Sources */,
+				710B4FB527D311DC00D88842 /* Logging.swift in Sources */,
+				710394FB27D5456800C3D618 /* QueryItemProviding.swift in Sources */,
+				710B4FB727D32E0F00D88842 /* Client.swift in Sources */,
+				710B4FBD27D4032400D88842 /* Response.swift in Sources */,
+				710B4FA727D3104100D88842 /* AviationWeather.docc in Sources */,
+				710394FD27D5495C00C3D618 /* TimeFrame.swift in Sources */,
+				710394F927D5450200C3D618 /* Stations.swift in Sources */,
+				710B4FB927D35ADC00D88842 /* Request.swift in Sources */,
+				710B4FB227D3105000D88842 /* METAR.swift in Sources */,
+				710B4FB127D3105000D88842 /* AviationWeather.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71132C632517DC310068BDF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */,
-				71132C8E2517DE870068BDF7 /* METAR.swift in Sources */,
 				71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */,
-				71132C8D2517DE870068BDF7 /* AviationWeather.swift in Sources */,
 				71132CA625181F150068BDF7 /* METARRow.swift in Sources */,
 				71132CA325181EFA0068BDF7 /* METARList.swift in Sources */,
 				71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */,
@@ -201,7 +325,85 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		710B4FAA27D3104100D88842 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 710B4FA227D3104000D88842 /* AviationWeather */;
+			targetProxy = 710B4FA927D3104100D88842 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		710B4FAE27D3104100D88842 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.AviationWeather;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		710B4FAF27D3104100D88842 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.AviationWeather;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
 		71132C742517DC330068BDF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -321,6 +523,7 @@
 		71132C772517DC330068BDF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -328,7 +531,7 @@
 				DEVELOPMENT_TEAM = W4XDZYQF7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = METAR/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -343,6 +546,7 @@
 		71132C782517DC330068BDF7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,7 +554,7 @@
 				DEVELOPMENT_TEAM = W4XDZYQF7N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = METAR/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +569,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		710B4FAD27D3104100D88842 /* Build configuration list for PBXNativeTarget "AviationWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				710B4FAE27D3104100D88842 /* Debug */,
+				710B4FAF27D3104100D88842 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		71132C622517DC310068BDF7 /* Build configuration list for PBXProject "METAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

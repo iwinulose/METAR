@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AviationWeather
 
 struct StationInfo : Identifiable {
     let station: Station

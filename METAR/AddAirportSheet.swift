@@ -16,7 +16,7 @@ struct AddAirportSheet: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text:$searchText).padding(.top, 10)
+                SearchBar(text:self.$searchText).padding(.top, 10)
                     .disableAutocorrection(true)
                 if searchText.count < 2 {
                     Spacer()

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AviationWeather
 
 class AppModel: ObservableObject {
     @Published private(set) var stationInfo: [StationInfo] = []
@@ -80,7 +81,8 @@ class AppModel: ObservableObject {
             return
         }
         
-        var request = METAR.Request(self.stationIDs)
+        var request = Request()
+        request.stations.addStations(self.stationIDs)
         request.mostRecentForEachStation = true
         request.hoursBeforeNow = 12
         AviationWeather.fetch(request) { (response, err) in

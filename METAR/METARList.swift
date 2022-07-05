@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import AviationWeather
+
 struct METARList: View {
     var stationInfo : [StationInfo]
     var mover: ((IndexSet, Int) -> Void)?
@@ -21,6 +23,9 @@ struct METARList: View {
             }
             .onMove(perform: mover)
             .onDelete(perform: deleter)
+            .onDrag {
+                NSItemProvider() // Weird trick lets reordering work via drag
+            }
         }
         .listStyle(PlainListStyle())
     }
