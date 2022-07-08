@@ -37,22 +37,26 @@ struct AirportDetailView: View {
                     TwoItemRow(title:"Flight category", value:info.METAR.flightCategory ?? "--")
                 }
                 Section {
-                    TwoItemRow(title:"Wind", value:formatWind(speed:info.METAR.windSpeed, direction:info.METAR.windDirection, gust:info.METAR.windGust))
-                    TwoItemRow(title:"Visibility", value:formatValue(info.METAR.visibility, unit:" mi"))
-                    TwoItemRow(title:"Altimeter", value:formatValue(info.METAR.altimeter, unit:" inHg"))
-                    TwoItemRow(title:"Temperature", value:formatValue(info.METAR.temperature, unit:" °C", precision:1))
-                    TwoItemRow(title:"Dew point", value:formatValue(info.METAR.dewpoint, unit:" °C", precision:1))
+                    let wind = WeatherStringFormatter.formatWind(speed:info.METAR.windSpeed, direction:info.METAR.windDirection, gust:info.METAR.windGust, unit:.knots)
+                    TwoItemRow(title:"Wind", value:wind)
+                    
+                    let visibility = WeatherStringFormatter.formatValue(info.METAR.visibility, unit:" mi")
+                    TwoItemRow(title:"Visibility", value:visibility)
+                    
+                    let altimeter = WeatherStringFormatter.formatValue(info.METAR.altimeter, unit:" inHg")
+                    TwoItemRow(title:"Altimeter", value:altimeter)
+                    TwoItemRow(title:"Temperature", value:WeatherStringFormatter.formatValue(info.METAR.temperature, unit:" °C", precision:1))
+                    TwoItemRow(title:"Dew point", value:WeatherStringFormatter.formatValue(info.METAR.dewpoint, unit:" °C", precision:1))
 //                    TwoItemRow(title:"Weather", value:info.METAR.weatherString ?? "")
 //                    TwoItemRow(title:"Density Altitude", value:"\(calculateDensityAltitude(info.METAR.temperature, info.METAR.) ?? "--")"
                 }
                 if !self.info.METAR.skyCondition.isEmpty {
                     Section (header:Text("Sky conditions")) {
                         Section {
-                            ForEach (0 ..< self.info.METAR.skyCondition.count) { index -> TwoItemRow in
-                                let condition = self.info.METAR.skyCondition[index]
+                            ForEach(self.info.METAR.skyCondition) { condition in
                                 let title = condition.coverage.description()
-                                let altitudeString = condition.altitude != nil ? formatValue(condition.altitude, unit:"ft") : ""
-                                return TwoItemRow(title:title, value:altitudeString)
+                                let altitudeString = condition.altitude != nil ? WeatherStringFormatter.formatValue(condition.altitude, unit:"ft") : ""
+                                TwoItemRow(title:title, value:altitudeString)
                             }
                         }
                     }
@@ -78,6 +82,9 @@ struct AirportDetailView: View {
         }
         .onDisappear() {
             self.resignCurrentActivity()
+        }
+        .refreshable {
+            self.refreshData()
         }
     }
     
@@ -119,49 +126,6 @@ struct AirportDetailView: View {
     func resignCurrentActivity() {
         // FIXME: Implement
     }
-}
-
-fileprivate func formatWind(speed:Int?, direction:Int?, gust:Int?) -> String {
-    let formattedSpeed = formatValue(speed, unit:"kts")
-    let formattedDirection = formatValue(direction, unit:"°")
-    var formattedGust = ""
-    if let gust = gust {
-        if gust > 0 {
-            formattedGust = " (G \(formatValue(gust, unit:"kts")))"
-        }
-    }
-    return "\(formattedDirection) @ \(formattedSpeed)\(formattedGust)"
-}
-
-//FIXME: there's probably a way to use generics here
-fileprivate func formatValue(_ value: Int?, unit: String = "") -> String {
-    var formattedValue = "--"
-    var suffix = ""
-    
-    if let value = value {
-        formattedValue = String(format:"%d", value)
-    }
-    
-    if unit != "" {
-        suffix = "\(unit)"
-    }
-    
-    return formattedValue + suffix
-}
-
-fileprivate func formatValue(_ value: Double?, unit: String = "", precision: Int = 2) -> String {
-    var formattedValue = "--"
-    var suffix = ""
-    
-    if let value = value {
-        formattedValue = String(format:"%.0\(precision)f", value)
-    }
-    
-    if unit != "" {
-        suffix = "\(unit)"
-    }
-    
-    return formattedValue + suffix
 }
 
 fileprivate func formatDate(_ date: Date?, timeZone: TimeZone) -> String {

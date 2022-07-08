@@ -18,7 +18,7 @@ struct METARList: View {
         List {
             ForEach(stationInfo) { info in
                 NavigationLink(destination:AirportDetailView(info:info)) {
-                    METARRow(info:info)
+                    METARIconRow(info:info)
                 }
             }
             .onMove(perform: mover)

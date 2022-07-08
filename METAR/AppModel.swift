@@ -44,7 +44,7 @@ class AppModel: ObservableObject {
         
         for id in self.stationIDs {
             let newInfo: StationInfo
-            let newStation:  Station
+            let newStation: Station
             let newMETAR: METAR
             let currentStationInfo = self.stationInfo.first(where: {$0.station.id == id})
             

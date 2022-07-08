@@ -75,6 +75,9 @@ struct AppView: View {
                     .onDisappear {
                         AppView.viewMyAirportsActivity.resignCurrent()
                     }
+                    .refreshable {
+                        model.fetchStationData()
+                    }
                 }
                 NavigationLink(destination:self.detailDestinationView, isActive:self.$pushAirportDetailView) {
                     EmptyView()

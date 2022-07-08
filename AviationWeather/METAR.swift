@@ -62,11 +62,29 @@ public struct METAR {
         self.windSpeed = windSpeed
         self.windGust = windGust
     }
+    
+    public func ceilingLayer() -> SkyCondition? {
+        // FIXME: relies on skyCondition always being sorted by altitude. Which it is but that could break.
+        return self.skyCondition.first(where: { condition in
+            switch (condition.coverage) {
+            case .bkn, .ovc, .ovx:
+                return true
+            default:
+                return false
+            }
+        })
+    }
 }
 
-public struct SkyCondition {
+public struct SkyCondition : Identifiable {
     public let altitude: Int?
     public let coverage: SkyCoverage
+    
+    public var id: String {
+        get {
+            return "\(coverage.description())\(String(describing: altitude))"
+        }
+    }
     
     enum XMLAttribute: String {
         case altitude = "cloud_base_ft_agl"

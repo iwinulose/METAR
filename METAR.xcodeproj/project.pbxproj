@@ -35,6 +35,9 @@
 		71132CB625197C860068BDF7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB525197C850068BDF7 /* Station.swift */; };
 		71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306572251D718600CF33A0 /* TwoItemRow.swift */; };
 		71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306576251F169D00CF33A0 /* View+Extensions.swift */; };
+		713EC0832878848400B29117 /* METARIconRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0822878848400B29117 /* METARIconRow.swift */; };
+		713EC08528788DAB00B29117 /* WeatherStringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */; };
+		713EC0872878A68600B29117 /* LabeledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0862878A68600B29117 /* LabeledIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		71132CB525197C850068BDF7 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		71306572251D718600CF33A0 /* TwoItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoItemRow.swift; sourceTree = "<group>"; };
 		71306576251F169D00CF33A0 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		713EC0822878848400B29117 /* METARIconRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARIconRow.swift; sourceTree = "<group>"; };
+		713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStringFormatter.swift; sourceTree = "<group>"; };
+		713EC0862878A68600B29117 /* LabeledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,18 +158,21 @@
 		71132C692517DC310068BDF7 /* METAR */ = {
 			isa = PBXGroup;
 			children = (
-				71132C6A2517DC310068BDF7 /* METARApp.swift */,
-				71132C7D2517DC860068BDF7 /* AppModel.swift */,
-				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
-				71132CA225181EFA0068BDF7 /* METARList.swift */,
-				71132CA525181F150068BDF7 /* METARRow.swift */,
 				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
 				71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */,
-				71306572251D718600CF33A0 /* TwoItemRow.swift */,
+				71132C7D2517DC860068BDF7 /* AppModel.swift */,
+				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
+				713EC0862878A68600B29117 /* LabeledIcon.swift */,
+				71132C6A2517DC310068BDF7 /* METARApp.swift */,
+				713EC0822878848400B29117 /* METARIconRow.swift */,
+				71132CA225181EFA0068BDF7 /* METARList.swift */,
+				71132CA525181F150068BDF7 /* METARRow.swift */,
 				71132CB1251872A20068BDF7 /* SearchBar.swift */,
 				71132CB525197C850068BDF7 /* Station.swift */,
 				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
+				71306572251D718600CF33A0 /* TwoItemRow.swift */,
 				71306576251F169D00CF33A0 /* View+Extensions.swift */,
+				713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */,
 				71132C6E2517DC330068BDF7 /* Assets.xcassets */,
 				71132C732517DC330068BDF7 /* Info.plist */,
 				71132C702517DC330068BDF7 /* Preview Content */,
@@ -314,10 +323,13 @@
 				71132CA325181EFA0068BDF7 /* METARList.swift in Sources */,
 				71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */,
 				71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */,
+				713EC08528788DAB00B29117 /* WeatherStringFormatter.swift in Sources */,
+				713EC0872878A68600B29117 /* LabeledIcon.swift in Sources */,
 				71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */,
 				71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */,
 				71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */,
 				71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */,
+				713EC0832878848400B29117 /* METARIconRow.swift in Sources */,
 				71132CB625197C860068BDF7 /* Station.swift in Sources */,
 				71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */,
 			);
