@@ -1,5 +1,5 @@
 //
-//  DecodedMETARRow.swift
+//  METARIconRow.swift
 //  METAR
 //
 //  Created by Charles Duyk on 7/8/22.
@@ -11,7 +11,11 @@ import AviationWeather
 
 struct METARIconRow: View {
     let info: StationInfo
-
+    
+    init(_ info: StationInfo) {
+        self.info = info
+    }
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0.0) {
             HStack {
@@ -34,6 +38,7 @@ struct METARIconRow: View {
         }
     }
     
+    //FIXME: This looks bad with particularly long strings and gusts, especially on smaller devices. (v1 OK)
     private func makeWindIcon() -> some View {
         let metar = info.METAR
         let speed = metar.windSpeed
@@ -56,7 +61,7 @@ struct METARIconRow: View {
         }
         
         if let skyCondition = skyCondition {
-            let imageName = imageNameForSkyCoverage(skyCondition.coverage)
+            let imageName = imageNameForSkyCoverage(skyCondition.coverage, atTime:info.METAR.observationTime)
             let label = labelForSkyCondition(skyCondition)
             ret = LabeledIcon(systemImageName: imageName, label: label)
         }
@@ -73,14 +78,19 @@ struct METARIconRow: View {
     }
 }
 
-fileprivate func imageNameForSkyCoverage(_ coverage: SkyCondition.SkyCoverage) -> String {
-    var ret: String = "questionmark.circle"
+fileprivate func imageNameForSkyCoverage(_ coverage: SkyCondition.SkyCoverage, atTime date: Date? = nil) -> String {
+    var ret = "questionmark.circle"
+    var isDaytime = true
+    
+    if let date = date {
+        isDaytime = date.isDaytime()
+    }
     
     switch (coverage) {
     case .skc, .clr, .cavoc:
-        ret = "sun.max"
+        ret = isDaytime ? "sun.max" : "moon"
     case .few, .sct:
-        ret = "cloud.sun"
+        ret = isDaytime ? "cloud.sun" : "cloud.moon"
     default:
         ret = "cloud"
     }
@@ -104,6 +114,13 @@ fileprivate func labelForSkyCondition(_ skyCondition: SkyCondition) -> String {
     return ret
 }
 
+extension Date {
+    func isDaytime() -> Bool {
+        let hours = Calendar.current.component(.hour, from: self)
+        return hours >= 7 && hours < 20
+    }
+}
+
 struct METARIconRow_Previews: PreviewProvider {
     static var previews: some View {
         var m = METAR()
@@ -114,7 +131,7 @@ struct METARIconRow_Previews: PreviewProvider {
 //        m.windGust = 15
         m.windDirection = 120
         m.rawText = "KSTS 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
-        return METARIconRow(info:StationInfo(station:Station(id: "KSTS"), METAR:m))
+        return METARIconRow(StationInfo(station:Station(id: "KSTS"), METAR:m))
     }
 }
 

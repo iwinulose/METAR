@@ -15,8 +15,9 @@ import AviationWeather
 let kViewMyAirportsActivityType = "com.duyk.GetMETAR.ViewMyAirports"
 
 struct AppView: View {
-    @ObservedObject var model: AppModel
+    @EnvironmentObject var model: AppModel
     @State private var showAddStationSheet = false
+    @State private var showSettingsSheet = false
     @State private var selectedStation: Station?
     @State private var pushedAirportStationID: String?
     @State private var pushedAirportStation: Station?
@@ -45,15 +46,15 @@ struct AppView: View {
         return activity
     }
 
-    var detailDestinationView: AnyView {
+    @ViewBuilder var detailDestinationView: some View {
         if let pushedStation = self.pushedAirportStation {
-            return AirportDetailView(info:StationInfo(station:pushedStation, METAR:METAR())).eraseToAnyView()
+            AirportDetailView(info:StationInfo(station:pushedStation, METAR:METAR()))
         }
         else if let pushedID = self.pushedAirportStationID {
-            return Text("No station information for \"\(pushedID)\"").eraseToAnyView()
+            Text("No station information for \"\(pushedID)\"")
         }
         else {
-            return Text("Not sure how you got here, but you shouldn't").eraseToAnyView()
+            Text("Not sure how you got here, but you shouldn't")
         }
     }
     
@@ -64,10 +65,12 @@ struct AppView: View {
                     Text("Add some airports to get started")
                 }
                 else {
-                    //FIXME: Factor this out into "MyAirportsView"
-                    METARList(stationInfo:self.model.stationInfo,
-                              mover: { self.model.stationIDs.move(fromOffsets: $0, toOffset: $1) },
-                              deleter: { self.model.stationIDs.remove(atOffsets:$0) }
+                    //FIXME: Factor this out into "MyAirportsView" (v1 OK)
+                    METARList(
+                        rowStyle: self.model.preferredRowStyle,
+                        stationInfo:self.model.stationInfo,
+                        mover: { self.model.stationIDs.move(fromOffsets: $0, toOffset: $1) },
+                        deleter: { self.model.stationIDs.remove(atOffsets:$0) }
                     )
                     .onAppear {
                         AppView.viewMyAirportsActivity.becomeCurrent()
@@ -84,18 +87,35 @@ struct AppView: View {
                 }
             }
             .navigationTitle("My Airports")
-            .navigationBarItems(trailing:Button(action: { self.showAddStationSheet.toggle() },
-                                                label: { Text("Add") })
+            .navigationBarItems(
+                leading: makeSettingsButton(),
+                trailing: makeAddStationButton()
             )
+            // TODO: Use NavigationSplitView on iOS 16 and up
+            // On iPad (or big phones in landscape) iOS will show this label
+            Text("Choose an airport form the sidebar")
         }
         .sheet(isPresented: self.$showAddStationSheet, onDismiss: { self.handleAddStation() }, content: {
             AddAirportSheet(stations:self.model.allStations, selection:self.$selectedStation)
+        })
+        .sheet(isPresented: self.$showSettingsSheet, content: {
+            SettingsSheet()
         })
         .onContinueUserActivity(kViewMyAirportsActivityType) { activity in
         }
         .onContinueUserActivity(kViewAirportDetailsActivityType) { activity in
             
         }
+    }
+    
+    private func makeSettingsButton() -> some View {
+        let icon = Image(systemName: "gearshape")
+        return Button(action: { self.showSettingsSheet.toggle() }, label: { icon })
+    }
+    
+    private func makeAddStationButton() -> some View {
+        return Button(action: { self.showAddStationSheet.toggle() },
+                                        label: { Text("Add") })
     }
     
     private func handleAddStation() {
@@ -117,6 +137,6 @@ struct AppView: View {
 struct AppView_Previews: PreviewProvider {
     static var previews: some View {
         let model = AppModel(ArrayAppModelDataSource(["KSFO", "PHNL"]))
-        return AppView(model:model)
+        return AppView().environmentObject(model)
     }
 }

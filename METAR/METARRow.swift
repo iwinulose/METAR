@@ -12,6 +12,10 @@ import AviationWeather
 struct METARRow: View {
     let info: StationInfo
     
+    init(_ info: StationInfo) {
+        self.info = info
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -36,6 +40,6 @@ struct METARRow_Previews: PreviewProvider {
         m.stationID = "KSTS"
         m.flightCategory = "VFR"
         m.rawText = "KSTS 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
-        return METARRow(info:StationInfo(station:Station(id: "KSTS"), METAR:m))
+        return METARRow(StationInfo(station:Station(id: "KSTS"), METAR:m))
     }
 }

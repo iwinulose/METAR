@@ -41,7 +41,7 @@ public struct Response  {
         
         func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
             guard let element = METAR.Element(rawValue: elementName) else {
-                //FIXME: Logging cleanup
+                //FIXME: Logging cleanup (v1 OK)
                 print("Skipping element named \(elementName)")
                 return;
             }
@@ -99,7 +99,7 @@ public struct Response  {
                 self.currentMETAR?.skyCondition.append(SkyCondition(altitude: altitude, coverage: coverage))
             }
             else {
-                //FIXME: Logging cleanup
+                //FIXME: Logging cleanup (v1 OK)
                 print("Unknown sky coverage \(String(describing: rawCoverage))")
             }
         }
@@ -149,7 +149,7 @@ extension METAR {
         case .envelope:
             break
         case .error:
-            //FIXME: Logging cleanup
+            //FIXME: Logging cleanup (v1 OK)
             print("Shouldn't be handling error here")
         case .flightCategory:
             self.flightCategory = value
@@ -168,7 +168,7 @@ extension METAR {
         case .seaLevelPressureMb:
             self.seaLevelPressureMb = doubleValue
         case .skyCondition:
-            //FIXME: Logging cleanup
+            //FIXME: Logging cleanup (v1 OK)
             print("HANDLE SKYCONDITION")
         case .stationID:
             self.stationID = value
@@ -179,7 +179,7 @@ extension METAR {
         case .visibility:
             self.visibility = doubleValue
         case .warning:
-            //FIXME: Logging cleanup
+            //FIXME: Logging cleanup (v1 OK)
             print("Shouldn't be handling warning here")
         case .weatherString:
             self.weatherString =  value

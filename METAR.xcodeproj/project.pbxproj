@@ -38,6 +38,14 @@
 		713EC0832878848400B29117 /* METARIconRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0822878848400B29117 /* METARIconRow.swift */; };
 		713EC08528788DAB00B29117 /* WeatherStringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */; };
 		713EC0872878A68600B29117 /* LabeledIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0862878A68600B29117 /* LabeledIcon.swift */; };
+		713EC0892878F78600B29117 /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0882878F78600B29117 /* SettingsSheet.swift */; };
+		713EC08B2879D11500B29117 /* METARRowStyleChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC08A2879D11500B29117 /* METARRowStyleChooser.swift */; };
+		713EC08D2879E85500B29117 /* METARRowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC08C2879E85500B29117 /* METARRowStyle.swift */; };
+		713EC08F2879F5FA00B29117 /* DismissableSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC08E2879F5FA00B29117 /* DismissableSheet.swift */; };
+		713EC0912879F89300B29117 /* Checkmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0902879F89300B29117 /* Checkmark.swift */; };
+		713EC093287A01B300B29117 /* CheckmarkRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC092287A01B300B29117 /* CheckmarkRow.swift */; };
+		713EC095287A64B000B29117 /* METARRowStyle+ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC094287A64B000B29117 /* METARRowStyle+ViewBuilder.swift */; };
+		713EC097287A85ED00B29117 /* SkyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC096287A85ED00B29117 /* SkyCondition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +105,14 @@
 		713EC0822878848400B29117 /* METARIconRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARIconRow.swift; sourceTree = "<group>"; };
 		713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStringFormatter.swift; sourceTree = "<group>"; };
 		713EC0862878A68600B29117 /* LabeledIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledIcon.swift; sourceTree = "<group>"; };
+		713EC0882878F78600B29117 /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
+		713EC08A2879D11500B29117 /* METARRowStyleChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARRowStyleChooser.swift; sourceTree = "<group>"; };
+		713EC08C2879E85500B29117 /* METARRowStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = METARRowStyle.swift; sourceTree = "<group>"; };
+		713EC08E2879F5FA00B29117 /* DismissableSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableSheet.swift; sourceTree = "<group>"; };
+		713EC0902879F89300B29117 /* Checkmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkmark.swift; sourceTree = "<group>"; };
+		713EC092287A01B300B29117 /* CheckmarkRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkRow.swift; sourceTree = "<group>"; };
+		713EC094287A64B000B29117 /* METARRowStyle+ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "METARRowStyle+ViewBuilder.swift"; sourceTree = "<group>"; };
+		713EC096287A85ED00B29117 /* SkyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyCondition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +142,7 @@
 				710B4FB627D32E0F00D88842 /* Client.swift */,
 				710B4FB427D311DC00D88842 /* Logging.swift */,
 				71132C8B2517DE870068BDF7 /* METAR.swift */,
+				713EC096287A85ED00B29117 /* SkyCondition.swift */,
 				710394FA27D5456800C3D618 /* QueryItemProviding.swift */,
 				710B4FBC27D4032400D88842 /* Response.swift */,
 				710B4F9C27D08A3E00D88842 /* RawRepresentable+Comparisons.swift */,
@@ -158,16 +175,23 @@
 		71132C692517DC310068BDF7 /* METAR */ = {
 			isa = PBXGroup;
 			children = (
-				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
 				71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */,
+				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
 				71132C7D2517DC860068BDF7 /* AppModel.swift */,
 				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
+				713EC08E2879F5FA00B29117 /* DismissableSheet.swift */,
+				713EC0902879F89300B29117 /* Checkmark.swift */,
+				713EC092287A01B300B29117 /* CheckmarkRow.swift */,
 				713EC0862878A68600B29117 /* LabeledIcon.swift */,
 				71132C6A2517DC310068BDF7 /* METARApp.swift */,
 				713EC0822878848400B29117 /* METARIconRow.swift */,
 				71132CA225181EFA0068BDF7 /* METARList.swift */,
 				71132CA525181F150068BDF7 /* METARRow.swift */,
+				713EC08C2879E85500B29117 /* METARRowStyle.swift */,
+				713EC094287A64B000B29117 /* METARRowStyle+ViewBuilder.swift */,
+				713EC08A2879D11500B29117 /* METARRowStyleChooser.swift */,
 				71132CB1251872A20068BDF7 /* SearchBar.swift */,
+				713EC0882878F78600B29117 /* SettingsSheet.swift */,
 				71132CB525197C850068BDF7 /* Station.swift */,
 				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
 				71306572251D718600CF33A0 /* TwoItemRow.swift */,
@@ -302,6 +326,7 @@
 				710B4FB327D3109700D88842 /* RawRepresentable+Comparisons.swift in Sources */,
 				710B4FB527D311DC00D88842 /* Logging.swift in Sources */,
 				710394FB27D5456800C3D618 /* QueryItemProviding.swift in Sources */,
+				713EC097287A85ED00B29117 /* SkyCondition.swift in Sources */,
 				710B4FB727D32E0F00D88842 /* Client.swift in Sources */,
 				710B4FBD27D4032400D88842 /* Response.swift in Sources */,
 				710B4FA727D3104100D88842 /* AviationWeather.docc in Sources */,
@@ -317,18 +342,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713EC08D2879E85500B29117 /* METARRowStyle.swift in Sources */,
 				71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */,
 				71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */,
 				71132CA625181F150068BDF7 /* METARRow.swift in Sources */,
 				71132CA325181EFA0068BDF7 /* METARList.swift in Sources */,
+				713EC095287A64B000B29117 /* METARRowStyle+ViewBuilder.swift in Sources */,
 				71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */,
+				713EC093287A01B300B29117 /* CheckmarkRow.swift in Sources */,
+				713EC08F2879F5FA00B29117 /* DismissableSheet.swift in Sources */,
 				71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */,
 				713EC08528788DAB00B29117 /* WeatherStringFormatter.swift in Sources */,
 				713EC0872878A68600B29117 /* LabeledIcon.swift in Sources */,
 				71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */,
+				713EC08B2879D11500B29117 /* METARRowStyleChooser.swift in Sources */,
 				71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */,
 				71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */,
+				713EC0912879F89300B29117 /* Checkmark.swift in Sources */,
 				71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */,
+				713EC0892878F78600B29117 /* SettingsSheet.swift in Sources */,
 				713EC0832878848400B29117 /* METARIconRow.swift in Sources */,
 				71132CB625197C860068BDF7 /* Station.swift in Sources */,
 				71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */,

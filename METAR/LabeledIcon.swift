@@ -1,5 +1,5 @@
 //
-//  InfoIcon.swift
+//  LabeledIcon.swift
 //  METAR
 //
 //  Created by Charles Duyk on 7/8/22.

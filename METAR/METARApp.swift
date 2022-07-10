@@ -14,7 +14,8 @@ struct METARApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AppView(model:model)
+            AppView()
+                .environmentObject(model)
         }.onChange(of: scenePhase) { phase in
             handlePhaseChange(phase)
         }

@@ -48,7 +48,7 @@ struct SearchBar: View {
                 }
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
-                // FIXME: .animation is deprecated, but I can't figure out how to use withAnimation
+                // FIXME: .animation is deprecated, but I can't figure out how to use withAnimation (v1 OK)
                 .animation(.default)
             }
         }

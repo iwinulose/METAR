@@ -1,5 +1,5 @@
 //
-//  METARDetailView.swift
+//  AirportDetailView.swift
 //  METAR
 //
 //  Created by Charles Duyk on 9/20/20.
@@ -22,7 +22,7 @@ struct AirportDetailView: View {
             let activity = NSUserActivity(activityType: kViewAirportDetailsActivityType)
             activity.title = "\(stationID) METAR"
             activity.suggestedInvocationPhrase = "Check \(stationID) weather"
-            activity.persistentIdentifier = NSUserActivityPersistentIdentifier(self.info.id)
+            activity.persistentIdentifier =  NSUserActivityPersistentIdentifier(self.info.id)
             activity.isEligibleForPrediction = true
             activity.isEligibleForSearch = true
             activity.contentAttributeSet = searchAttributes
@@ -48,7 +48,10 @@ struct AirportDetailView: View {
                     TwoItemRow(title:"Temperature", value:WeatherStringFormatter.formatValue(info.METAR.temperature, unit:" °C", precision:1))
                     TwoItemRow(title:"Dew point", value:WeatherStringFormatter.formatValue(info.METAR.dewpoint, unit:" °C", precision:1))
 //                    TwoItemRow(title:"Weather", value:info.METAR.weatherString ?? "")
-//                    TwoItemRow(title:"Density Altitude", value:"\(calculateDensityAltitude(info.METAR.temperature, info.METAR.) ?? "--")"
+//                    TwoItemRow(
+//                        title:"Density Altitude",
+//                        value:"\(approximateDensityAltitude(tempF:info.METAR.temperature ?? 0.0, pressureInHg:info.METAR.altimeter ?? 29.96))"
+//                    )
                 }
                 if !self.info.METAR.skyCondition.isEmpty {
                     Section (header:Text("Sky conditions")) {
@@ -73,9 +76,6 @@ struct AirportDetailView: View {
         }
         .navigationBarTitle(info.station.id)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: Button(action: { self.refreshData() }) {
-            Image(systemName: "arrow.clockwise")
-        })
         .onAppear() {
             self.refreshData()
             self.becomeCurrentActivity()
@@ -103,28 +103,28 @@ struct AirportDetailView: View {
                         }
                     }
                     else {
-                        //FIXME: show error
+                        //FIXME: show error (v1 OK)
                         print("Fetched METAR for wrong station")
                     }
                 }
             }
             else if let err = err {
-                //FIXME: Show this error in the app
+                //FIXME: Show this error in the app (v1 OK)
                 print(err)
             }
             else {
-                //FIXME: This should be an alert since it shouldn't happen.
+                //FIXME: This should be an alert since it shouldn't happen. (v1 OK)
                 print("Wat")
             }
         }
     }
         
     func becomeCurrentActivity() {
-        // FIXME: Implement
+        // FIXME: Implement (v1 OK)
     }
     
     func resignCurrentActivity() {
-        // FIXME: Implement
+        // FIXME: Implement (v1 OK)
     }
 }
 

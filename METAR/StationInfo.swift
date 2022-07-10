@@ -1,5 +1,5 @@
 //
-//  Station.swift
+//  StationInfo.swift
 //  METAR
 //
 //  Created by Charles Duyk on 9/19/20.

@@ -12,7 +12,15 @@ import AviationWeather
 
 class AppModel: ObservableObject {
     @Published private(set) var stationInfo: [StationInfo] = []
-//    @Published var error: Error?
+    var preferredRowStyle: METARRowStyle {
+        get {
+            return self.dataSource.preferredRowStyle
+        }
+        set {
+            self.objectWillChange.send()
+            self.dataSource.preferredRowStyle = newValue
+        }
+    }
 
     private var dataSource: AppModelDataSource
     private(set) lazy var allStations: [Station] = try! Station.decodeJSONArray(NSDataAsset(name:"Stations")!.data)
@@ -55,7 +63,7 @@ class AppModel: ObservableObject {
                 newStation = station
             }
             else {
-                //FIXME: Inform user somehow
+                //FIXME: Inform user somehow (v1 OK)
                 print("WARNING: No station known info for \(id)")
                 newStation = Station(id:id)
             }
@@ -94,11 +102,11 @@ class AppModel: ObservableObject {
                 }
             }
             else if let err = err {
-                //FIXME: Show this error in the app
+                //FIXME: Show this error in the app (v1 OK)
                 print(err)
             }
             else {
-                //FIXME: This should be an alert since it shouldn't happen.
+                //FIXME: This should be an alert since it shouldn't happen. (v1 OK)
                 print("Wat")
             }
         }
@@ -111,19 +119,23 @@ class AppModel: ObservableObject {
 
 protocol AppModelDataSource {
     var stationIDs: [String] {get set}
+    var preferredRowStyle: METARRowStyle {get set}
 }
 
 class ArrayAppModelDataSource: AppModelDataSource {
     var stationIDs: [String]
+    var preferredRowStyle: METARRowStyle
     
-    init(_ stationIDs:[String] = []) {
+    init(_ stationIDs:[String] = [], preferredRowStyle: METARRowStyle = METARRowStyle.defaultStyle()) {
         self.stationIDs = stationIDs
+        self.preferredRowStyle = preferredRowStyle
     }
 }
 
 class UserDefaultsDataSource: AppModelDataSource {
     enum Keys: String {
         case requestedStationIDs
+        case preferredMETARRowStyle
     }
     
     var stationIDs: [String] {
@@ -132,6 +144,27 @@ class UserDefaultsDataSource: AppModelDataSource {
         }
         set {
             UserDefaults.standard.set(newValue, forKey:Keys.requestedStationIDs.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    var preferredRowStyle: METARRowStyle {
+        get {
+            var ret = METARRowStyle.defaultStyle()
+            if let defaultsString = UserDefaults.standard.string(forKey: Keys.preferredMETARRowStyle.rawValue),
+               let defaultsStyle = METARRowStyle(rawValue: defaultsString) {
+                ret = defaultsStyle
+            }
+            else {
+                //FIXME: Logging cleanup (v1 OK)
+                print("Unable to read style from user defaults, returning \(ret.rawValue)")
+            }
+            
+            return ret
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.preferredMETARRowStyle.rawValue)
+            UserDefaults.standard.synchronize()
         }
     }
 }

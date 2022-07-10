@@ -14,9 +14,10 @@ public func fetch(_ request: Request, completion:@escaping (Response?, Error?) -
     defaultClient.fetch(request, completion:completion)
 }
 
-// FIXME: are these functions needed? Is this the right spot for this?
+// FIXME: are these functions needed? Is this the right spot for this? (v1 OK)
 // Per Wikipedia: https://en.wikipedia.org/wiki/Density_altitude#The_National_Weather_Service_(NWS)_Formula
-public func approximateDensityAltitude(tempF: Double, pressureInHg: Double) -> Double {
+public func approximateDensityAltitude(tempC: Double, pressureInHg: Double) -> Double {
+    let tempF = 1.8 * tempC + 32
     let altitudeCoefficientFt = 145442.16
     let pressureTemperatureConversionCoefficient = 17.326
     let temperatureDenominatorConstant = 459.67

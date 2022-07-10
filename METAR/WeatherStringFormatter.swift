@@ -26,7 +26,7 @@ struct WeatherStringFormatter {
         return "\(formattedDirection) @ \(formattedSpeed)\(formattedGust)"
     }
 
-    //FIXME: there's probably a way to use generics here
+    //FIXME: there's probably a way to use generics here (v1 OK)
     static func formatValue(_ value: Int?, unit: String = "") -> String {
         var formattedValue = "--"
         var suffix = ""
