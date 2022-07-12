@@ -1,5 +1,5 @@
 //
-//  METARRowStyleChooser.swift
+//  METARRowStylePicker.swift
 //  METAR
 //
 //  Created by Charles Duyk on 7/9/22.
@@ -9,7 +9,7 @@ import SwiftUI
 
 import AviationWeather
 
-struct METARRowStyleChooser: View {
+struct METARRowStylePicker: View {
     @Binding var selectedRowStyle: METARRowStyle
     let stationInfo: StationInfo
     
@@ -17,21 +17,23 @@ struct METARRowStyleChooser: View {
         List {
             ForEach (METARRowStyle.allCases, id: \.rawValue) { style in
                 Section( content: {
-                    CheckmarkRow(checked: selectedRowStyle == style) {
+                    CheckmarkRow(checked: self.selectedRowStyle == style) {
                         style.createAssociatedRow(stationInfo)
-                    }.onTapGesture {
-                        selectedRowStyle = style
+                    }
+                    .onTapGesture {
+                        self.selectedRowStyle = style
                     }
                 }, header: {
                     Text(style.description())
                 })
             }
-        }.listStyle(.insetGrouped)
+        }
+        .listStyle(.insetGrouped)
     }
 }
 
-struct METARRowTypeChooser_Previews: PreviewProvider {
-    @State static var selectedRowType: METARRowStyle = .raw
+struct METARRowTypePicker_Previews: PreviewProvider {
+    @State static var selectedRowType: METARRowStyle = .metar
     
     static var previews: some View {
         let station = Station(id: "KSTS")
@@ -43,7 +45,7 @@ struct METARRowTypeChooser_Previews: PreviewProvider {
         metar.visibility = 7
         let stationInfo = StationInfo(station: station, METAR: metar)
         
-        return METARRowStyleChooser(
+        return METARRowStylePicker(
             selectedRowStyle: self.$selectedRowType,
             stationInfo: stationInfo
         )

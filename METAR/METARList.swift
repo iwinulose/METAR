@@ -19,7 +19,7 @@ struct METARList: View {
         List {
             ForEach(stationInfo) { info in
                 NavigationLink(destination:AirportDetailView(info:info)) {
-                    rowStyle.createAssociatedRow(info)
+                    self.rowStyle.createAssociatedRow(info)
                 }
             }
             .onMove(perform: mover)
@@ -40,6 +40,6 @@ struct METARList_Previews: PreviewProvider {
         m.flightCategory = "VFR"
         m.rawText = "KSTS 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
         stations.append(StationInfo(station:Station(id:"KSTS"), METAR: m))
-        return METARList(rowStyle:.raw, stationInfo: stations, deleter: nil)
+        return METARList(rowStyle:.metar, stationInfo: stations, deleter: nil)
     }
 }

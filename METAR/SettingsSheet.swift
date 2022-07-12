@@ -13,40 +13,43 @@ struct SettingsSheet: View {
     @EnvironmentObject var model: AppModel
     
     var body: some View {
-        DismissableSheet {
-            List {
-                Section("Appearance") {
-                    NavigationLink(
-                        destination: {
-                            METARRowStyleChooser(
-                                selectedRowStyle: $model.preferredRowStyle,
-                                stationInfo: _defaultStationInfo()
-                            )
-                            .navigationTitle("Choose your style")
-                        },
-                        label: {
-                            TwoItemRow(title:"Row style", value: model.preferredRowStyle.description())
-                        }
-                    )
+        NavigationView {
+            DismissingView {
+                List {
+                    Section("Appearance") {
+                        NavigationLink(
+                            destination: {
+                                METARRowStylePicker(
+                                    selectedRowStyle: self.$model.preferredRowStyle,
+                                    stationInfo: self._exampleStationInfo()
+                                )
+                                .navigationTitle("Choose a row style")
+                            },
+                            label: {
+                                TwoItemRow(title:"Row style", value: self.model.preferredRowStyle.description())
+                            }
+                        )
+                    }
                 }
+                .navigationTitle("Settings")
             }
-            .navigationTitle("Settings")
         }
     }
-}
-
-fileprivate func _defaultStationInfo() -> StationInfo {
-    let station = Station(id: "KMIA")
-    let skyCondition = SkyCondition(altitude:nil, coverage:.clr)
-    var metar = METAR()
-    metar.stationID = "KMIA"
-    metar.flightCategory = "VFR"
-    metar.rawText = "KMIA 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
-    metar.windSpeed = 7
-    metar.windDirection = 220
-    metar.visibility = 7
-    metar.skyCondition.append(skyCondition)
-    return StationInfo(station: station, METAR: metar)
+    
+    private func _exampleStationInfo() -> StationInfo {
+        let stationInfo: StationInfo
+        
+        // Show a real world example if the user has one, or use dummy data
+        if let userStationInfo = self.model.stationInfo.first,
+            userStationInfo.METAR.flightCategory != nil {
+            stationInfo = userStationInfo
+        }
+        else {
+            stationInfo = StationInfo.dummy("KMIA")
+        }
+        
+        return stationInfo
+    }
 }
 
 struct SettingsSheet_Previews: PreviewProvider {

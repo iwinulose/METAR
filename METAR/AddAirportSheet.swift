@@ -7,58 +7,45 @@
 
 import SwiftUI
 
+import AviationWeather
+
 struct AddAirportSheet: View {
     let stations: [Station]
-    @Binding var selection: Station?
-    @Environment(\.presentationMode) var presentationMode
-    @State var searchText: String = ""
+    let selection: Binding<Station?>
+    let showsOnboardingAfterSelection: Bool
+    
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var showOnboarding = false
     
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(text:self.$searchText).padding(.top, 10)
-                    .disableAutocorrection(true)
-                if searchText.count < 2 {
-                    Spacer()
-                    Text("Search for airport by ICAO identifier or city").multilineTextAlignment(.center)
-                    Spacer()
-                }
-                else {
-                    List {
-                        ForEach(self.filterStations(searchText)) { station in
-                            HStack {
-                                Text(station.id + " - " + station.name)
-                                Spacer()
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                self.selection = station
+            DismissingView {
+                VStack {
+                    AirportPicker(stations:self.stations,
+                                  selection:self.selection,
+                                  airportPicked: self.handleAirportPicked)
+                    NavigationLink(isActive: self.$showOnboarding, destination: {
+                        OnboardingView(stationInfo: StationInfo.dummy(self.selection.wrappedValue?.id ?? "KIAD"))
+                            .navigationBarBackButtonHidden(true)
+                            .navigationBarItems(trailing: Button("Done") {
                                 self.dismiss()
-                            }
-                        }
-                    }
+                            })
+                    }, label: { EmptyView() })
                 }
+                .navigationBarTitle("Add Airport")
+                .navigationBarTitleDisplayMode(.inline)
             }
-            .navigationBarTitle("Add Airport")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing:
-                Button("Done") {
-                    self.dismiss()
-                }
-            )
         }
     }
     
-    func filterStations(_ searchTerm: String) -> [Station] {
-        if searchTerm.isEmpty {
-            return self.stations
+    private func handleAirportPicked() {
+        if (self.showsOnboardingAfterSelection && self.selection.wrappedValue != nil) {
+            self.showOnboarding = true
         }
-        let searchTerm = searchTerm.lowercased()
-        return stations.filter({ $0.id.lowercased().contains(searchTerm) || $0.name.lowercased().contains(searchTerm)})
-    }
-    
-    func dismiss() {
-        self.presentationMode.wrappedValue.dismiss()
+        else {
+            self.dismiss()
+        }
     }
 }
 

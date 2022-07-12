@@ -62,7 +62,7 @@ struct AppView: View {
         NavigationView {
             VStack {
                 if model.stationIDs.isEmpty {
-                    Text("Add some airports to get started")
+                    WelcomeView()
                 }
                 else {
                     //FIXME: Factor this out into "MyAirportsView" (v1 OK)
@@ -72,6 +72,7 @@ struct AppView: View {
                         mover: { self.model.stationIDs.move(fromOffsets: $0, toOffset: $1) },
                         deleter: { self.model.stationIDs.remove(atOffsets:$0) }
                     )
+                    .navigationTitle("My Airports")
                     .onAppear {
                         AppView.viewMyAirportsActivity.becomeCurrent()
                     }
@@ -86,7 +87,6 @@ struct AppView: View {
                     EmptyView()
                 }
             }
-            .navigationTitle("My Airports")
             .navigationBarItems(
                 leading: makeSettingsButton(),
                 trailing: makeAddStationButton()
@@ -95,16 +95,22 @@ struct AppView: View {
             // On iPad (or big phones in landscape) iOS will show this label
             Text("Choose an airport form the sidebar")
         }
-        .sheet(isPresented: self.$showAddStationSheet, onDismiss: { self.handleAddStation() }, content: {
-            AddAirportSheet(stations:self.model.allStations, selection:self.$selectedStation)
-        })
-        .sheet(isPresented: self.$showSettingsSheet, content: {
-            SettingsSheet()
-        })
+        .sheet(
+            isPresented: self.$showAddStationSheet,
+            onDismiss: { self.handleAddStation() },
+            content: {
+                AddAirportSheet(
+                    stations:self.model.allStations,
+                    selection:self.$selectedStation,
+                    showsOnboardingAfterSelection: !self.model.onboardingCompleted
+                )
+            })
+        .sheet(
+            isPresented: self.$showSettingsSheet,
+            content: {
+                SettingsSheet()
+            })
         .onContinueUserActivity(kViewMyAirportsActivityType) { activity in
-        }
-        .onContinueUserActivity(kViewAirportDetailsActivityType) { activity in
-            
         }
     }
     
@@ -123,6 +129,9 @@ struct AppView: View {
             return
         }
         self.model.stationIDs.append(station.id)
+        if (!self.model.onboardingCompleted) {
+            self.model.onboardingCompleted = true
+        }
         self.selectedStation = nil
     }
     

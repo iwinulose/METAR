@@ -10,7 +10,7 @@ import SwiftUI
 extension METARRowStyle {
     @ViewBuilder func createAssociatedRow(_ stationInfo: StationInfo) -> some View {
         switch (self) {
-        case .raw:
+        case .metar:
             METARRow(stationInfo)
         case .icons:
             METARIconRow(stationInfo)

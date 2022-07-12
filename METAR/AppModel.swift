@@ -12,6 +12,7 @@ import AviationWeather
 
 class AppModel: ObservableObject {
     @Published private(set) var stationInfo: [StationInfo] = []
+    
     var preferredRowStyle: METARRowStyle {
         get {
             return self.dataSource.preferredRowStyle
@@ -39,6 +40,15 @@ class AppModel: ObservableObject {
     var metars: [METAR] = [] {
         didSet {
             self.updateStationInfo()
+        }
+    }
+    
+    var onboardingCompleted: Bool {
+        get {
+            return self.dataSource.onboardingCompleted
+        }
+        set {
+            self.dataSource.onboardingCompleted = newValue
         }
     }
 
@@ -120,11 +130,13 @@ class AppModel: ObservableObject {
 protocol AppModelDataSource {
     var stationIDs: [String] {get set}
     var preferredRowStyle: METARRowStyle {get set}
+    var onboardingCompleted: Bool {get set}
 }
 
 class ArrayAppModelDataSource: AppModelDataSource {
     var stationIDs: [String]
     var preferredRowStyle: METARRowStyle
+    var onboardingCompleted: Bool = false
     
     init(_ stationIDs:[String] = [], preferredRowStyle: METARRowStyle = METARRowStyle.defaultStyle()) {
         self.stationIDs = stationIDs
@@ -136,6 +148,7 @@ class UserDefaultsDataSource: AppModelDataSource {
     enum Keys: String {
         case requestedStationIDs
         case preferredMETARRowStyle
+        case onboardingCompleted
     }
     
     var stationIDs: [String] {
@@ -164,6 +177,16 @@ class UserDefaultsDataSource: AppModelDataSource {
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: Keys.preferredMETARRowStyle.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    var onboardingCompleted: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey:Keys.onboardingCompleted.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey:Keys.onboardingCompleted.rawValue)
             UserDefaults.standard.synchronize()
         }
     }

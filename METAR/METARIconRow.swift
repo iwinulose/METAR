@@ -19,11 +19,11 @@ struct METARIconRow: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0.0) {
             HStack {
-                Text(info.station.id)
+                Text(self.info.station.id)
                     .font(.largeTitle)
                     .bold()
                 Spacer()
-                Text(info.METAR.flightCategory ?? "--")
+                Text(self.info.METAR.flightCategory ?? "--")
                     .font(.largeTitle)
                     .bold()
             }
@@ -40,7 +40,7 @@ struct METARIconRow: View {
     
     //FIXME: This looks bad with particularly long strings and gusts, especially on smaller devices. (v1 OK)
     private func makeWindIcon() -> some View {
-        let metar = info.METAR
+        let metar = self.info.METAR
         let speed = metar.windSpeed
         let direction = metar.windDirection
         let gust = metar.windGust
@@ -52,16 +52,17 @@ struct METARIconRow: View {
     private func makeSkyConditionIcon() -> some View {
         var ret = LabeledIcon(systemImageName: "arrow.triangle.2.circlepath", label: "Fetching")
         var skyCondition: SkyCondition? = nil
+        let metar = self.info.METAR
         
-        if let ceiling = info.METAR.ceilingLayer() {
+        if let ceiling = metar.ceilingLayer() {
             skyCondition = ceiling
         }
         else {
-            skyCondition = info.METAR.skyCondition.first
+            skyCondition = metar.skyCondition.first
         }
         
         if let skyCondition = skyCondition {
-            let imageName = imageNameForSkyCoverage(skyCondition.coverage, atTime:info.METAR.observationTime)
+            let imageName = imageNameForSkyCoverage(skyCondition.coverage, atTime:metar.observationTime)
             let label = labelForSkyCondition(skyCondition)
             ret = LabeledIcon(systemImageName: imageName, label: label)
         }

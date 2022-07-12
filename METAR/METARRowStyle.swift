@@ -6,18 +6,18 @@
 //
 
 enum METARRowStyle: String, CaseIterable {
-    case raw
+    case metar
     case icons
     
     static func defaultStyle() -> METARRowStyle {
-        return .raw
+        return .metar
     }
     
     func description() -> String {
         var ret = ""
         
         switch (self) {
-        case .raw:
+        case .metar:
             ret = "METAR"
         case .icons:
             ret = "Simplified"
