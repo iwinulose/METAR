@@ -181,31 +181,9 @@
 		71132C692517DC310068BDF7 /* METAR */ = {
 			isa = PBXGroup;
 			children = (
-				71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */,
-				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
-				713EC09A287CDA1D00B29117 /* AirportPicker.swift */,
-				716783E6287D0E6700CDD400 /* OnboardingView.swift */,
-				71132C7D2517DC860068BDF7 /* AppModel.swift */,
-				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
-				713EC08E2879F5FA00B29117 /* DismissingView.swift */,
-				713EC0902879F89300B29117 /* Checkmark.swift */,
-				713EC092287A01B300B29117 /* CheckmarkRow.swift */,
-				713EC0862878A68600B29117 /* LabeledIcon.swift */,
-				71132C6A2517DC310068BDF7 /* METARApp.swift */,
-				713EC0822878848400B29117 /* METARIconRow.swift */,
-				71132CA225181EFA0068BDF7 /* METARList.swift */,
-				71132CA525181F150068BDF7 /* METARRow.swift */,
-				713EC08C2879E85500B29117 /* METARRowStyle.swift */,
-				713EC094287A64B000B29117 /* METARRowStyle+ViewBuilder.swift */,
-				713EC08A2879D11500B29117 /* METARRowStylePicker.swift */,
-				71132CB1251872A20068BDF7 /* SearchBar.swift */,
-				713EC0882878F78600B29117 /* SettingsSheet.swift */,
-				71132CB525197C850068BDF7 /* Station.swift */,
-				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
-				71306572251D718600CF33A0 /* TwoItemRow.swift */,
-				71306576251F169D00CF33A0 /* View+Extensions.swift */,
-				713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */,
-				713EC098287A96F900B29117 /* WelcomeView.swift */,
+				71666149287DBDDC0022C979 /* Models */,
+				7166614B287DBE800022C979 /* App Views */,
+				7166614A287DBE240022C979 /* Utility Views */,
 				71132C6E2517DC330068BDF7 /* Assets.xcassets */,
 				71132C732517DC330068BDF7 /* Info.plist */,
 				71132C702517DC330068BDF7 /* Preview Content */,
@@ -219,6 +197,52 @@
 				71132C712517DC330068BDF7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		71666149287DBDDC0022C979 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71132C7D2517DC860068BDF7 /* AppModel.swift */,
+				71132CB525197C850068BDF7 /* Station.swift */,
+				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
+				713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7166614A287DBE240022C979 /* Utility Views */ = {
+			isa = PBXGroup;
+			children = (
+				713EC0902879F89300B29117 /* Checkmark.swift */,
+				713EC092287A01B300B29117 /* CheckmarkRow.swift */,
+				713EC08E2879F5FA00B29117 /* DismissingView.swift */,
+				713EC0862878A68600B29117 /* LabeledIcon.swift */,
+				71132CB1251872A20068BDF7 /* SearchBar.swift */,
+				71306572251D718600CF33A0 /* TwoItemRow.swift */,
+				71306576251F169D00CF33A0 /* View+Extensions.swift */,
+			);
+			path = "Utility Views";
+			sourceTree = "<group>";
+		};
+		7166614B287DBE800022C979 /* App Views */ = {
+			isa = PBXGroup;
+			children = (
+				71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */,
+				71132CA825182B0B0068BDF7 /* AirportDetailView.swift */,
+				713EC09A287CDA1D00B29117 /* AirportPicker.swift */,
+				71132C7A2517DC6D0068BDF7 /* AppView.swift */,
+				71132C6A2517DC310068BDF7 /* METARApp.swift */,
+				713EC0822878848400B29117 /* METARIconRow.swift */,
+				71132CA225181EFA0068BDF7 /* METARList.swift */,
+				71132CA525181F150068BDF7 /* METARRow.swift */,
+				713EC08C2879E85500B29117 /* METARRowStyle.swift */,
+				713EC094287A64B000B29117 /* METARRowStyle+ViewBuilder.swift */,
+				713EC08A2879D11500B29117 /* METARRowStylePicker.swift */,
+				716783E6287D0E6700CDD400 /* OnboardingView.swift */,
+				713EC0882878F78600B29117 /* SettingsSheet.swift */,
+				713EC098287A96F900B29117 /* WelcomeView.swift */,
+			);
+			path = "App Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

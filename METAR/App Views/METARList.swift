@@ -10,10 +10,10 @@ import SwiftUI
 import AviationWeather
 
 struct METARList: View {
-    var rowStyle: METARRowStyle
-    var stationInfo : [StationInfo]
-    var mover: ((IndexSet, Int) -> Void)?
-    var deleter: ((IndexSet) -> Void)?
+    let rowStyle: METARRowStyle
+    let stationInfo : [StationInfo]
+    let mover: ((IndexSet, Int) -> Void)?
+    let deleter: ((IndexSet) -> Void)?
     
     var body: some View {
         List {
@@ -34,12 +34,8 @@ struct METARList: View {
 
 struct METARList_Previews: PreviewProvider {
     static var previews: some View {
-        var stations: [StationInfo] = []
-        var m = METAR()
-        m.stationID = "KSTS"
-        m.flightCategory = "VFR"
-        m.rawText = "KSTS 200053Z AUTO 22007KT 7SM HZ CLR 28/11 A2988 RMK AO2 SLP112 T02830111"
-        stations.append(StationInfo(station:Station(id:"KSTS"), METAR: m))
-        return METARList(rowStyle:.metar, stationInfo: stations, deleter: nil)
+        let stations = [StationInfo.dummy("KSTS"),
+                        StationInfo.dummy("KSFO")]
+        return METARList(rowStyle:.metar, stationInfo: stations, mover: nil, deleter: nil)
     }
 }

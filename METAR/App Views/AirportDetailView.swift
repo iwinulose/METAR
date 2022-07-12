@@ -14,6 +14,7 @@ let kViewAirportDetailsActivityType = "com.duyk.GetMETAR.ViewAirportDetails"
 
 struct AirportDetailView: View {
     @State var info: StationInfo
+    
     var userActity: NSUserActivity {
         get {
             let stationID = self.info.id
@@ -149,10 +150,6 @@ fileprivate func formatObservationTimeFooter(_ date: Date?) -> String {
     
     return minutes == 0 ? "METAR is fresh" : "METAR is \(minutes) \(unitString) old"
 }
-
-//fileprivate func calculateDensityAltitude() -> Double? {
-//    guard
-//}
 
 struct AirportDetailView_Previews: PreviewProvider {
     static var previews: some View {
