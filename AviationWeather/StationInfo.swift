@@ -7,19 +7,23 @@
 //
 
 import Foundation
-import AviationWeather
 
-struct StationInfo : Identifiable {
-    let station: Station
-    let METAR: METAR
-    
-    var id: String {
+public struct StationInfo : Identifiable {
+    public let station: Station
+    public let METAR: METAR
+        
+    public var id: String {
         get {
             return self.station.id
         }
     }
     
-    static func dummy(_ id: String) -> StationInfo {
+    public init(station: Station, METAR: METAR) {
+        self.station = station
+        self.METAR = METAR
+    }
+    
+    public static func dummy(_ id: String) -> StationInfo {
         let station = Station(id: id)
         let skyCondition = SkyCondition(altitude:nil, coverage:.clr)
         var metar = AviationWeather.METAR()

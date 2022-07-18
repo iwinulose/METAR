@@ -24,6 +24,7 @@
 	<true/>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>ViewSingleAirportWeatherIntent</string>
 		<string>com.duyk.GetMETAR.ViewMyAirports</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

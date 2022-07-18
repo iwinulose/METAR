@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import AviationWeather
+
 extension METARRowStyle {
     @ViewBuilder func createAssociatedRow(_ stationInfo: StationInfo) -> some View {
         switch (self) {

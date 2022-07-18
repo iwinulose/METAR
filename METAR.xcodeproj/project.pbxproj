@@ -26,13 +26,11 @@
 		71132C722517DC330068BDF7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C712517DC330068BDF7 /* Preview Assets.xcassets */; };
 		71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C7A2517DC6D0068BDF7 /* AppView.swift */; };
 		71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C7D2517DC860068BDF7 /* AppModel.swift */; };
-		71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C832517DCAF0068BDF7 /* StationInfo.swift */; };
 		71132CA325181EFA0068BDF7 /* METARList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA225181EFA0068BDF7 /* METARList.swift */; };
 		71132CA625181F150068BDF7 /* METARRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA525181F150068BDF7 /* METARRow.swift */; };
 		71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CA825182B0B0068BDF7 /* AirportDetailView.swift */; };
 		71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CAD25186AE50068BDF7 /* AddAirportSheet.swift */; };
 		71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB1251872A20068BDF7 /* SearchBar.swift */; };
-		71132CB625197C860068BDF7 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB525197C850068BDF7 /* Station.swift */; };
 		71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306572251D718600CF33A0 /* TwoItemRow.swift */; };
 		71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71306576251F169D00CF33A0 /* View+Extensions.swift */; };
 		713EC0832878848400B29117 /* METARIconRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC0822878848400B29117 /* METARIconRow.swift */; };
@@ -48,11 +46,67 @@
 		713EC097287A85ED00B29117 /* SkyCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC096287A85ED00B29117 /* SkyCondition.swift */; };
 		713EC099287A96F900B29117 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC098287A96F900B29117 /* WelcomeView.swift */; };
 		713EC09B287CDA1D00B29117 /* AirportPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713EC09A287CDA1D00B29117 /* AirportPicker.swift */; };
+		716661532884B2E00022C979 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716661522884B2E00022C979 /* WidgetKit.framework */; };
+		716661552884B2E00022C979 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716661542884B2E00022C979 /* SwiftUI.framework */; };
+		716661582884B2E00022C979 /* SingleAirportWeatherWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716661572884B2E00022C979 /* SingleAirportWeatherWidget.swift */; };
+		716661622884B2E10022C979 /* METARWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 716661502884B2E00022C979 /* METARWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		716661662884B40B0022C979 /* AviationWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710B4FA327D3104000D88842 /* AviationWeather.framework */; };
 		716783E7287D0E6700CDD400 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716783E6287D0E6700CDD400 /* OnboardingView.swift */; };
+		71925B3C28851FC5003EB8D8 /* METARIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 716661592884B2E00022C979 /* METARIntents.intentdefinition */; };
+		71925B3D28851FC7003EB8D8 /* METARIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 716661592884B2E00022C979 /* METARIntents.intentdefinition */; };
+		7192DD402885E422007AB42B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C6E2517DC330068BDF7 /* Assets.xcassets */; };
+		7192DD472885E546007AB42B /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7192DD462885E546007AB42B /* Intents.framework */; };
+		7192DD4A2885E546007AB42B /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192DD492885E546007AB42B /* IntentHandler.swift */; };
+		7192DD522885E546007AB42B /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7192DD512885E546007AB42B /* IntentsUI.framework */; };
+		7192DD552885E546007AB42B /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192DD542885E546007AB42B /* IntentViewController.swift */; };
+		7192DD582885E546007AB42B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7192DD562885E546007AB42B /* MainInterface.storyboard */; };
+		7192DD5C2885E546007AB42B /* METARIntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7192DD502885E546007AB42B /* METARIntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7192DD5F2885E546007AB42B /* METARIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7192DD452885E546007AB42B /* METARIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7192DD662885E921007AB42B /* METARIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 716661592884B2E00022C979 /* METARIntents.intentdefinition */; };
+		7192DD672886012B007AB42B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71132C6E2517DC330068BDF7 /* Assets.xcassets */; };
+		7192DD68288601D8007AB42B /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132CB525197C850068BDF7 /* Station.swift */; };
+		7192DD69288601D8007AB42B /* StationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71132C832517DCAF0068BDF7 /* StationInfo.swift */; };
+		7192DD6A28860212007AB42B /* AviationWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710B4FA327D3104000D88842 /* AviationWeather.framework */; };
+		71F8E42A28860FCA00B5BBBC /* Station+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F8E42928860FCA00B5BBBC /* Station+Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		710B4FA927D3104100D88842 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 710B4FA227D3104000D88842;
+			remoteInfo = AviationWeather;
+		};
+		7166615F2884B2E10022C979 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7166614F2884B2E00022C979;
+			remoteInfo = SingleAirportWeatherWidgetExtension;
+		};
+		716661672884B42A0022C979 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 710B4FA227D3104000D88842;
+			remoteInfo = AviationWeather;
+		};
+		7192DD5A2885E546007AB42B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7192DD4F2885E546007AB42B;
+			remoteInfo = METARIntentsUI;
+		};
+		7192DD5D2885E546007AB42B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7192DD442885E546007AB42B;
+			remoteInfo = METARIntents;
+		};
+		7192DD6B28860216007AB42B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71132C5F2517DC300068BDF7 /* Project object */;
 			proxyType = 1;
@@ -71,6 +125,19 @@
 				710B4FAC27D3104100D88842 /* AviationWeather.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		716661612884B2E10022C979 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7192DD5F2885E546007AB42B /* METARIntents.appex in Embed App Extensions */,
+				7192DD5C2885E546007AB42B /* METARIntentsUI.appex in Embed App Extensions */,
+				716661622884B2E10022C979 /* METARWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -118,7 +185,23 @@
 		713EC096287A85ED00B29117 /* SkyCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyCondition.swift; sourceTree = "<group>"; };
 		713EC098287A96F900B29117 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		713EC09A287CDA1D00B29117 /* AirportPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportPicker.swift; sourceTree = "<group>"; };
+		716661502884B2E00022C979 /* METARWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = METARWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		716661522884B2E00022C979 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		716661542884B2E00022C979 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		716661572884B2E00022C979 /* SingleAirportWeatherWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAirportWeatherWidget.swift; sourceTree = "<group>"; };
+		716661592884B2E00022C979 /* METARIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = METARIntents.intentdefinition; sourceTree = "<group>"; };
+		7166615C2884B2E10022C979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716783E6287D0E6700CDD400 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7192DD452885E546007AB42B /* METARIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = METARIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7192DD462885E546007AB42B /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		7192DD492885E546007AB42B /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		7192DD4B2885E546007AB42B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7192DD502885E546007AB42B /* METARIntentsUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = METARIntentsUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7192DD512885E546007AB42B /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		7192DD542885E546007AB42B /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		7192DD572885E546007AB42B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7192DD592885E546007AB42B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71F8E42928860FCA00B5BBBC /* Station+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Station+Search.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +217,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				710B4FAB27D3104100D88842 /* AviationWeather.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7166614D2884B2E00022C979 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				716661662884B40B0022C979 /* AviationWeather.framework in Frameworks */,
+				716661552884B2E00022C979 /* SwiftUI.framework in Frameworks */,
+				716661532884B2E00022C979 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7192DD422885E546007AB42B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD6A28860212007AB42B /* AviationWeather.framework in Frameworks */,
+				7192DD472885E546007AB42B /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7192DD4D2885E546007AB42B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD522885E546007AB42B /* IntentsUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +263,9 @@
 				710B4FBC27D4032400D88842 /* Response.swift */,
 				710B4F9C27D08A3E00D88842 /* RawRepresentable+Comparisons.swift */,
 				710B4FB827D35ADC00D88842 /* Request.swift */,
+				71132CB525197C850068BDF7 /* Station.swift */,
+				71F8E42928860FCA00B5BBBC /* Station+Search.swift */,
+				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
 				710394F827D5450200C3D618 /* Stations.swift */,
 				710394FC27D5495C00C3D618 /* TimeFrame.swift */,
 				710B4FA627D3104100D88842 /* AviationWeather.docc */,
@@ -165,6 +278,10 @@
 			children = (
 				71132C692517DC310068BDF7 /* METAR */,
 				710B4FA427D3104100D88842 /* AviationWeather */,
+				716661562884B2E00022C979 /* METARWidget */,
+				7192DD482885E546007AB42B /* METARIntents */,
+				7192DD532885E546007AB42B /* METARIntentsUI */,
+				716661512884B2E00022C979 /* Frameworks */,
 				71132C682517DC310068BDF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -174,6 +291,9 @@
 			children = (
 				71132C672517DC310068BDF7 /* METAR.app */,
 				710B4FA327D3104000D88842 /* AviationWeather.framework */,
+				716661502884B2E00022C979 /* METARWidget.appex */,
+				7192DD452885E546007AB42B /* METARIntents.appex */,
+				7192DD502885E546007AB42B /* METARIntentsUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,8 +323,6 @@
 			isa = PBXGroup;
 			children = (
 				71132C7D2517DC860068BDF7 /* AppModel.swift */,
-				71132CB525197C850068BDF7 /* Station.swift */,
-				71132C832517DCAF0068BDF7 /* StationInfo.swift */,
 				713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */,
 			);
 			path = Models;
@@ -243,6 +361,46 @@
 				713EC098287A96F900B29117 /* WelcomeView.swift */,
 			);
 			path = "App Views";
+			sourceTree = "<group>";
+		};
+		716661512884B2E00022C979 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				716661522884B2E00022C979 /* WidgetKit.framework */,
+				716661542884B2E00022C979 /* SwiftUI.framework */,
+				7192DD462885E546007AB42B /* Intents.framework */,
+				7192DD512885E546007AB42B /* IntentsUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		716661562884B2E00022C979 /* METARWidget */ = {
+			isa = PBXGroup;
+			children = (
+				716661572884B2E00022C979 /* SingleAirportWeatherWidget.swift */,
+				7166615C2884B2E10022C979 /* Info.plist */,
+			);
+			path = METARWidget;
+			sourceTree = "<group>";
+		};
+		7192DD482885E546007AB42B /* METARIntents */ = {
+			isa = PBXGroup;
+			children = (
+				7192DD492885E546007AB42B /* IntentHandler.swift */,
+				716661592884B2E00022C979 /* METARIntents.intentdefinition */,
+				7192DD4B2885E546007AB42B /* Info.plist */,
+			);
+			path = METARIntents;
+			sourceTree = "<group>";
+		};
+		7192DD532885E546007AB42B /* METARIntentsUI */ = {
+			isa = PBXGroup;
+			children = (
+				7192DD542885E546007AB42B /* IntentViewController.swift */,
+				7192DD562885E546007AB42B /* MainInterface.storyboard */,
+				7192DD592885E546007AB42B /* Info.plist */,
+			);
+			path = METARIntentsUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,16 +443,73 @@
 				71132C642517DC310068BDF7 /* Frameworks */,
 				71132C652517DC310068BDF7 /* Resources */,
 				710B4FB027D3104100D88842 /* Embed Frameworks */,
+				716661612884B2E10022C979 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				710B4FAA27D3104100D88842 /* PBXTargetDependency */,
+				716661602884B2E10022C979 /* PBXTargetDependency */,
+				7192DD5B2885E546007AB42B /* PBXTargetDependency */,
+				7192DD5E2885E546007AB42B /* PBXTargetDependency */,
 			);
 			name = METAR;
 			productName = METAR;
 			productReference = 71132C672517DC310068BDF7 /* METAR.app */;
 			productType = "com.apple.product-type.application";
+		};
+		7166614F2884B2E00022C979 /* METARWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 716661632884B2E10022C979 /* Build configuration list for PBXNativeTarget "METARWidget" */;
+			buildPhases = (
+				7166614C2884B2E00022C979 /* Sources */,
+				7166614D2884B2E00022C979 /* Frameworks */,
+				7166614E2884B2E00022C979 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				716661682884B42A0022C979 /* PBXTargetDependency */,
+			);
+			name = METARWidget;
+			productName = SingleAirportWeatherWidgetExtension;
+			productReference = 716661502884B2E00022C979 /* METARWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		7192DD442885E546007AB42B /* METARIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7192DD632885E546007AB42B /* Build configuration list for PBXNativeTarget "METARIntents" */;
+			buildPhases = (
+				7192DD412885E546007AB42B /* Sources */,
+				7192DD422885E546007AB42B /* Frameworks */,
+				7192DD432885E546007AB42B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7192DD6C28860216007AB42B /* PBXTargetDependency */,
+			);
+			name = METARIntents;
+			productName = METARIntents;
+			productReference = 7192DD452885E546007AB42B /* METARIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		7192DD4F2885E546007AB42B /* METARIntentsUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7192DD602885E546007AB42B /* Build configuration list for PBXNativeTarget "METARIntentsUI" */;
+			buildPhases = (
+				7192DD4C2885E546007AB42B /* Sources */,
+				7192DD4D2885E546007AB42B /* Frameworks */,
+				7192DD4E2885E546007AB42B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = METARIntentsUI;
+			productName = METARIntentsUI;
+			productReference = 7192DD502885E546007AB42B /* METARIntentsUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -302,7 +517,7 @@
 		71132C5F2517DC300068BDF7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					710B4FA227D3104000D88842 = {
@@ -310,6 +525,15 @@
 					};
 					71132C662517DC310068BDF7 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					7166614F2884B2E00022C979 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					7192DD442885E546007AB42B = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					7192DD4F2885E546007AB42B = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
@@ -328,6 +552,9 @@
 			targets = (
 				71132C662517DC310068BDF7 /* METAR */,
 				710B4FA227D3104000D88842 /* AviationWeather */,
+				7166614F2884B2E00022C979 /* METARWidget */,
+				7192DD442885E546007AB42B /* METARIntents */,
+				7192DD4F2885E546007AB42B /* METARIntentsUI */,
 			);
 		};
 /* End PBXProject section */
@@ -349,6 +576,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7166614E2884B2E00022C979 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD402885E422007AB42B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7192DD432885E546007AB42B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD672886012B007AB42B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7192DD4E2885E546007AB42B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD582885E546007AB42B /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -361,10 +612,13 @@
 				710394FB27D5456800C3D618 /* QueryItemProviding.swift in Sources */,
 				713EC097287A85ED00B29117 /* SkyCondition.swift in Sources */,
 				710B4FB727D32E0F00D88842 /* Client.swift in Sources */,
+				71F8E42A28860FCA00B5BBBC /* Station+Search.swift in Sources */,
 				710B4FBD27D4032400D88842 /* Response.swift in Sources */,
 				710B4FA727D3104100D88842 /* AviationWeather.docc in Sources */,
 				710394FD27D5495C00C3D618 /* TimeFrame.swift in Sources */,
 				710394F927D5450200C3D618 /* Stations.swift in Sources */,
+				7192DD68288601D8007AB42B /* Station.swift in Sources */,
+				7192DD69288601D8007AB42B /* StationInfo.swift in Sources */,
 				710B4FB927D35ADC00D88842 /* Request.swift in Sources */,
 				710B4FB227D3105000D88842 /* METAR.swift in Sources */,
 				710B4FB127D3105000D88842 /* AviationWeather.swift in Sources */,
@@ -384,8 +638,8 @@
 				71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */,
 				713EC093287A01B300B29117 /* CheckmarkRow.swift in Sources */,
 				713EC08F2879F5FA00B29117 /* DismissingView.swift in Sources */,
-				71132C842517DCAF0068BDF7 /* StationInfo.swift in Sources */,
 				713EC08528788DAB00B29117 /* WeatherStringFormatter.swift in Sources */,
+				71925B3C28851FC5003EB8D8 /* METARIntents.intentdefinition in Sources */,
 				713EC0872878A68600B29117 /* LabeledIcon.swift in Sources */,
 				713EC09B287CDA1D00B29117 /* AirportPicker.swift in Sources */,
 				71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */,
@@ -397,9 +651,34 @@
 				71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */,
 				713EC0892878F78600B29117 /* SettingsSheet.swift in Sources */,
 				713EC0832878848400B29117 /* METARIconRow.swift in Sources */,
-				71132CB625197C860068BDF7 /* Station.swift in Sources */,
 				713EC099287A96F900B29117 /* WelcomeView.swift in Sources */,
 				71132C7E2517DC860068BDF7 /* AppModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7166614C2884B2E00022C979 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				716661582884B2E00022C979 /* SingleAirportWeatherWidget.swift in Sources */,
+				71925B3D28851FC7003EB8D8 /* METARIntents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7192DD412885E546007AB42B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD4A2885E546007AB42B /* IntentHandler.swift in Sources */,
+				7192DD662885E921007AB42B /* METARIntents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7192DD4C2885E546007AB42B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7192DD552885E546007AB42B /* IntentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,12 +690,49 @@
 			target = 710B4FA227D3104000D88842 /* AviationWeather */;
 			targetProxy = 710B4FA927D3104100D88842 /* PBXContainerItemProxy */;
 		};
+		716661602884B2E10022C979 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7166614F2884B2E00022C979 /* METARWidget */;
+			targetProxy = 7166615F2884B2E10022C979 /* PBXContainerItemProxy */;
+		};
+		716661682884B42A0022C979 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 710B4FA227D3104000D88842 /* AviationWeather */;
+			targetProxy = 716661672884B42A0022C979 /* PBXContainerItemProxy */;
+		};
+		7192DD5B2885E546007AB42B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7192DD4F2885E546007AB42B /* METARIntentsUI */;
+			targetProxy = 7192DD5A2885E546007AB42B /* PBXContainerItemProxy */;
+		};
+		7192DD5E2885E546007AB42B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7192DD442885E546007AB42B /* METARIntents */;
+			targetProxy = 7192DD5D2885E546007AB42B /* PBXContainerItemProxy */;
+		};
+		7192DD6C28860216007AB42B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 710B4FA227D3104000D88842 /* AviationWeather */;
+			targetProxy = 7192DD6B28860216007AB42B /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7192DD562885E546007AB42B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7192DD572885E546007AB42B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		710B4FAE27D3104100D88842 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -452,6 +768,7 @@
 		710B4FAF27D3104100D88842 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -646,6 +963,172 @@
 			};
 			name = Release;
 		};
+		716661642884B2E10022C979 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = METARWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = METARWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR.METARWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		716661652884B2E10022C979 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = METARWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = METARWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR.METARWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7192DD612885E546007AB42B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = METARIntentsUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = METARIntentsUI;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR.METARIntentsUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7192DD622885E546007AB42B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = METARIntentsUI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = METARIntentsUI;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR.METARIntentsUI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7192DD642885E546007AB42B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = METARIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = METARIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR.METARIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7192DD652885E546007AB42B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W4XDZYQF7N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = METARIntents/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = METARIntents;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.duyk.GetMETAR.METARIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -672,6 +1155,33 @@
 			buildConfigurations = (
 				71132C772517DC330068BDF7 /* Debug */,
 				71132C782517DC330068BDF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		716661632884B2E10022C979 /* Build configuration list for PBXNativeTarget "METARWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				716661642884B2E10022C979 /* Debug */,
+				716661652884B2E10022C979 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7192DD602885E546007AB42B /* Build configuration list for PBXNativeTarget "METARIntentsUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7192DD612885E546007AB42B /* Debug */,
+				7192DD622885E546007AB42B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7192DD632885E546007AB42B /* Build configuration list for PBXNativeTarget "METARIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7192DD642885E546007AB42B /* Debug */,
+				7192DD652885E546007AB42B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

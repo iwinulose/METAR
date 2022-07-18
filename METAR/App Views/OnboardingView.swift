@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import AviationWeather
+
 struct OnboardingView: View {
     let stationInfo: StationInfo
     

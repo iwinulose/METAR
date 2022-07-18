@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import AviationWeather
+
 struct AirportPicker: View {
     let stations: [Station]
     @Binding var selection: Station?
@@ -27,7 +29,7 @@ struct AirportPicker: View {
             }
             else {
                 List {
-                    ForEach(self.filterStations(self.searchText)) { station in
+                    ForEach(self.stations.search(self.searchText)) { station in
                         HStack {
                             Text(station.id + " - " + station.name)
                             Spacer()
@@ -42,15 +44,6 @@ struct AirportPicker: View {
             }
         }
     }
-    
-    private func filterStations(_ searchTerm: String) -> [Station] {
-        if searchTerm.isEmpty {
-            return self.stations
-        }
-        let searchTerm = searchTerm.lowercased()
-        return stations.filter({ $0.id.lowercased().contains(searchTerm) || $0.name.lowercased().contains(searchTerm)})
-    }
-
 }
 
 struct AirportPicker_Previews: PreviewProvider {

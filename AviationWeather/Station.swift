@@ -8,28 +8,28 @@
 import Foundation
 import CoreLocation
 
-struct Station: Identifiable {
-    let id: String
-    let name: String
-    let state: String
-    let country: String
-    let coordinates: CLLocationCoordinate2D?
-    let altitudeMeters: Double
-    let types: [String]
+public struct Station: Identifiable {
+    public let id: String
+    public let name: String
+    public let state: String
+    public let country: String
+    public let coordinates: CLLocationCoordinate2D?
+    public let altitudeMeters: Double
+    public let types: [String]
     
-    static func decodeJSON(_ json:Data) throws -> Station {
+    public static func decodeJSON(_ json:Data) throws -> Station {
         let decoder = JSONDecoder()
         let intermediate = try decoder.decode(_stationJSONStruct.self, from:json)
         return Station(decodedJSON:intermediate)
     }
     
-    static func decodeJSONArray(_ json:Data) throws -> [Station] {
+    public static func decodeJSONArray(_ json:Data) throws -> [Station] {
         let decoder = JSONDecoder()
         let intermediate = try decoder.decode([_stationJSONStruct].self, from:json)
         return intermediate.map { Station(decodedJSON:$0) }
     }
     
-    init(id: String, name: String = "", state: String = "", country: String = "", coordinates: CLLocationCoordinate2D? = nil, altitudeMeters: Double = 0.0, types: [String] = []) {
+    public init(id: String, name: String = "", state: String = "", country: String = "", coordinates: CLLocationCoordinate2D? = nil, altitudeMeters: Double = 0.0, types: [String] = []) {
         self.id = id
         self.name = name
         self.state = state
