@@ -8,22 +8,13 @@
 
 import Foundation
 import UIKit
+import WidgetKit
+
 import AviationWeather
 
 class AppModel: ObservableObject {
-    @Published private(set) var stationInfo: [StationInfo] = []
-    
-    var preferredRowStyle: METARRowStyle {
-        get {
-            return self.dataSource.preferredRowStyle
-        }
-        set {
-            self.objectWillChange.send()
-            self.dataSource.preferredRowStyle = newValue
-        }
-    }
-
     private var dataSource: AppModelDataSource
+    @Published private(set) var stationInfo: [StationInfo] = []
     private(set) lazy var allStations: [Station] = try! Station.decodeJSONArray(NSDataAsset(name:"Stations")!.data)
 
     var stationIDs: [String] {
@@ -38,6 +29,18 @@ class AppModel: ObservableObject {
     }
     
     var metars: [METAR] = [] {
+        willSet {
+            for newMetar in newValue {
+                if let oldMetar = self.metars.first(where: { $0.stationID == newMetar.stationID }),
+                   let oldObservationTime = oldMetar.observationTime,
+                   let newObservationTime = newMetar.observationTime,
+                oldObservationTime != newObservationTime {
+
+                    WidgetCenter.shared.reloadAllTimelines()
+                    break;
+                }
+            }
+        }
         didSet {
             self.updateStationInfo()
         }
@@ -49,6 +52,16 @@ class AppModel: ObservableObject {
         }
         set {
             self.dataSource.onboardingCompleted = newValue
+        }
+    }
+    
+    var preferredRowStyle: METARRow.Style {
+        get {
+            return self.dataSource.preferredRowStyle
+        }
+        set {
+            self.objectWillChange.send()
+            self.dataSource.preferredRowStyle = newValue
         }
     }
 
@@ -74,7 +87,6 @@ class AppModel: ObservableObject {
             }
             else {
                 //FIXME: Inform user somehow (v1 OK)
-                print("WARNING: No station known info for \(id)")
                 newStation = Station(id:id)
             }
             
@@ -129,16 +141,16 @@ class AppModel: ObservableObject {
 
 protocol AppModelDataSource {
     var stationIDs: [String] {get set}
-    var preferredRowStyle: METARRowStyle {get set}
     var onboardingCompleted: Bool {get set}
+    var preferredRowStyle: METARRow.Style {get set}
 }
 
 class ArrayAppModelDataSource: AppModelDataSource {
     var stationIDs: [String]
-    var preferredRowStyle: METARRowStyle
     var onboardingCompleted: Bool = false
+    var preferredRowStyle: METARRow.Style
     
-    init(_ stationIDs:[String] = [], preferredRowStyle: METARRowStyle = METARRowStyle.defaultStyle()) {
+    init(_ stationIDs:[String] = [], preferredRowStyle: METARRow.Style = METARRow.Style.defaultStyle()) {
         self.stationIDs = stationIDs
         self.preferredRowStyle = preferredRowStyle
     }
@@ -161,11 +173,11 @@ class UserDefaultsDataSource: AppModelDataSource {
         }
     }
     
-    var preferredRowStyle: METARRowStyle {
+    var preferredRowStyle: METARRow.Style {
         get {
-            var ret = METARRowStyle.defaultStyle()
+            var ret = METARRow.Style.defaultStyle()
             if let defaultsString = UserDefaults.standard.string(forKey: Keys.preferredMETARRowStyle.rawValue),
-               let defaultsStyle = METARRowStyle(rawValue: defaultsString) {
+               let defaultsStyle = METARRow.Style(rawValue: defaultsString) {
                 ret = defaultsStyle
             }
             else {

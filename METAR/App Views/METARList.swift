@@ -10,7 +10,7 @@ import SwiftUI
 import AviationWeather
 
 struct METARList: View {
-    let rowStyle: METARRowStyle
+    let rowStyle: METARRow.Style
     let stationInfo : [StationInfo]
     let mover: ((IndexSet, Int) -> Void)?
     let deleter: ((IndexSet) -> Void)?

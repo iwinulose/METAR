@@ -9,13 +9,18 @@ import SwiftUI
 
 struct TwoItemRow: View {
     let title: String
-    let value: String
+    let value: String?
+    
+    init(title: String, value: String? = nil) {
+        self.title = title
+        self.value = value
+    }
     
     var body: some View {
         HStack {
             Text(title).bold()
             Spacer()
-            Text(value)
+            Text(value ?? "")
         }
     }
 }

@@ -30,6 +30,16 @@ struct SettingsSheet: View {
                             }
                         )
                     }
+                    Section("The boring stuff") {
+                        NavigationLink(
+                            destination: {
+                                Text("Legal and stuff")
+                            },
+                            label: {
+                                TwoItemRow(title: "Privacy & Legal")
+                            }
+                        )
+                    }
                 }
                 .navigationTitle("Settings")
             }

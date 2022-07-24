@@ -48,18 +48,18 @@ struct AirportDetailView: View {
                     TwoItemRow(title:"Altimeter", value:altimeter)
                     TwoItemRow(title:"Temperature", value:WeatherStringFormatter.formatValue(info.METAR.temperature, unit:" °C", precision:1))
                     TwoItemRow(title:"Dew point", value:WeatherStringFormatter.formatValue(info.METAR.dewpoint, unit:" °C", precision:1))
+                    TwoItemRow(
+                        title:"Density altitude",
+                        value:WeatherStringFormatter.formatValue(info.METAR.densityAltidueFt, unit:" ft")
 //                    TwoItemRow(title:"Weather", value:info.METAR.weatherString ?? "")
-//                    TwoItemRow(
-//                        title:"Density Altitude",
-//                        value:"\(approximateDensityAltitude(tempF:info.METAR.temperature ?? 0.0, pressureInHg:info.METAR.altimeter ?? 29.96))"
-//                    )
+                    )
                 }
                 if !self.info.METAR.skyCondition.isEmpty {
                     Section (header:Text("Sky conditions")) {
                         Section {
                             ForEach(self.info.METAR.skyCondition) { condition in
                                 let title = condition.coverage.description()
-                                let altitudeString = condition.altitude != nil ? WeatherStringFormatter.formatValue(condition.altitude, unit:"ft") : ""
+                                let altitudeString = condition.altitude != nil ? WeatherStringFormatter.formatValue(condition.altitude, unit:" ft") : ""
                                 TwoItemRow(title:title, value:altitudeString)
                             }
                         }
@@ -148,7 +148,7 @@ fileprivate func formatObservationTimeFooter(_ date: Date?) -> String {
     let minutes: Int = -Int(date.timeIntervalSinceNow/60)
     let unitString = (minutes == 1) ? "minute" : "minutes"
     
-    return minutes == 0 ? "METAR is fresh" : "METAR is \(minutes) \(unitString) old"
+    return minutes == 0 ? "METAR is brand new" : "METAR is \(minutes) \(unitString) old"
 }
 
 struct AirportDetailView_Previews: PreviewProvider {

@@ -15,6 +15,11 @@ public struct Station: Identifiable {
     public let country: String
     public let coordinates: CLLocationCoordinate2D?
     public let altitudeMeters: Double
+    public var altitudeFt: Double {
+        get {
+            return 3.280839895 * self.altitudeMeters
+        }
+    }
     public let types: [String]
     
     public static func decodeJSON(_ json:Data) throws -> Station {

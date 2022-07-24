@@ -140,11 +140,11 @@ struct SingleAirportWeatherWidgetEntryView : View {
                     .padding(EdgeInsets(top: edgePadding, leading: 0, bottom: 0, trailing: edgePadding))
 
             }
-            VStack (spacing:0) {
+            VStack (alignment:.leading, spacing:0) {
                 //FIXME: Show the simplified or METAR view.
                 Text(entry.metar?.rawText ?? "---")
-                    .padding(.horizontal, edgePadding)
                     .multilineTextAlignment(.leading)
+                    .padding(.horizontal, edgePadding)
                 Spacer()
             }
         }

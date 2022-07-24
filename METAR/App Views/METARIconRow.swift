@@ -30,7 +30,7 @@ struct METARIconRow: View {
             HStack(alignment: .firstTextBaseline, spacing: 0.0) {
                 makeWindIcon()
                     .frame(maxWidth:.infinity)
-                LabeledIcon(systemImageName:"binoculars", label: visibilityIconLabel)
+                LabeledIcon(icon:Image(systemName:"binoculars"), label: visibilityIconLabel)
                     .frame(maxWidth:.infinity)
                 makeSkyConditionIcon()
                     .frame(maxWidth:.infinity)
@@ -45,12 +45,13 @@ struct METARIconRow: View {
         let direction = metar.windDirection
         let gust = metar.windGust
         let label = WeatherStringFormatter.formatWind(speed: speed, direction: direction, gust: gust, unit: .knots)
-        let ret = LabeledIcon(systemImageName:"wind", label: label)
+        let icon = Image(systemName:"wind")
+        let ret = LabeledIcon(icon:icon, label: label)
         return ret
     }
     
-    private func makeSkyConditionIcon() -> some View {
-        var ret = LabeledIcon(systemImageName: "arrow.triangle.2.circlepath", label: "Fetching")
+    private func makeSkyConditionIcon() -> AnyView {
+        let ret: AnyView
         var skyCondition: SkyCondition? = nil
         let metar = self.info.METAR
         
@@ -62,9 +63,11 @@ struct METARIconRow: View {
         }
         
         if let skyCondition = skyCondition {
-            let imageName = imageNameForSkyCoverage(skyCondition.coverage, atTime:metar.observationTime)
-            let label = labelForSkyCondition(skyCondition)
-            ret = LabeledIcon(systemImageName: imageName, label: label)
+            ret = skyCondition.labeledIcon(forTime: metar.observationTime).eraseToAnyView()
+        }
+        else {
+            ret = LabeledIcon(icon:Image(systemName: "arrow.triangle.2.circlepath"),
+                               label: "Fetching").eraseToAnyView()
         }
         
         return ret
@@ -79,46 +82,66 @@ struct METARIconRow: View {
     }
 }
 
-fileprivate func imageNameForSkyCoverage(_ coverage: SkyCondition.SkyCoverage, atTime date: Date? = nil) -> String {
-    var ret = "questionmark.circle"
-    var isDaytime = true
-    
-    if let date = date {
-        isDaytime = date.isDaytime()
-    }
-    
-    switch (coverage) {
-    case .skc, .clr, .cavoc:
-        ret = isDaytime ? "sun.max" : "moon"
-    case .few, .sct:
-        ret = isDaytime ? "cloud.sun" : "cloud.moon"
-    default:
-        ret = "cloud"
-    }
-    
-    return ret
-}
-
-fileprivate func labelForSkyCondition(_ skyCondition: SkyCondition) -> String {
-    var ret = ""
-    
-    if let altitude = skyCondition.altitude {
-        ret = " \(WeatherStringFormatter.formatValue(altitude, unit: " ft"))"
-    }
-    
-    if ret.count > 0 {
-        ret += "\n"
-    }
-     
-    ret += skyCondition.coverage.description()
-    
-    return ret
-}
-
 extension Date {
     func isDaytime() -> Bool {
         let hours = Calendar.current.component(.hour, from: self)
         return hours >= 7 && hours < 20
+    }
+}
+
+extension SkyCondition { //Icon Generating
+    @ViewBuilder func labeledIcon(forTime date: Date? = nil) -> some View {
+        let icon = self.icon(forTime: date)
+        let label = self.labelText()
+        
+        switch (self.coverage) {
+        case .skc, .clr, .cavoc:
+            let styledIcon = icon.foregroundColor(Color.yellow)
+            LabeledIcon(icon: styledIcon, label: label)
+        case .few, .sct:
+            let styledIcon = icon
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(Color.primary, Color.yellow, Color(red: 0.35, green: 0.72, blue: 0.83))
+            LabeledIcon(icon:styledIcon, label: label)
+        default:
+            LabeledIcon(icon: icon, label: label)
+        }
+    }
+    
+    func labelText() -> String {
+        var ret = ""
+        
+        if let altitude = self.altitude {
+            ret = "\(WeatherStringFormatter.formatValue(altitude, unit: " ft"))"
+        }
+        
+        if ret.count > 0 {
+            ret += "\n"
+        }
+         
+        ret += self.coverage.description()
+        
+        return ret
+    }
+    
+    func icon(forTime date: Date? = nil) -> Image {
+        var imageName = "questionmark.circle"
+        var isDaytime = true
+        
+        if let date = date {
+            isDaytime = date.isDaytime()
+        }
+        
+        switch (self.coverage) {
+        case .skc, .clr, .cavoc:
+            imageName = isDaytime ? "sun.max" : "moon"
+        case .few, .sct:
+            imageName = isDaytime ? "cloud.sun" : "cloud.moon"
+        default:
+            imageName = "cloud"
+        }
+        
+        return Image(systemName: imageName)
     }
 }
 

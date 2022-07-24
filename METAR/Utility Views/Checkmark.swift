@@ -8,19 +8,54 @@
 import SwiftUI
 
 struct Checkmark: View {
-    let checked: Bool
-    let baseFont: Font = .title
-    
-    private var imageName: String {
-        get {
-            return checked ? "checkmark.circle.fill" : "circle"
+    enum Style {
+        case plain
+        case filledCircle
+        
+        @ViewBuilder fileprivate func viewWhen(_ checked: Bool) -> some View {
+            if checked {
+                self.checked()
+            }
+            else {
+                self.unchecked()
+            }
+        }
+        
+        @ViewBuilder private func checked() -> some View {
+            switch(self) {
+            case .plain:
+                Image(systemName:"checkmark")
+                    .foregroundColor(.accentColor)
+                    .font(.body)
+            case .filledCircle:
+                Image(systemName:"checkmark.circle.fill")
+                    .foregroundColor(.accentColor)
+                    .font(.title)
+            }
+        }
+        
+        @ViewBuilder private func unchecked() -> some View {
+            switch(self) {
+            case .plain:
+                EmptyView()
+            case .filledCircle:
+                Image(systemName:"circle")
+                    .font(.title.weight(.ultraLight))
+                    .foregroundColor(.gray)
+            }
         }
     }
     
+    let checked: Bool
+    let style: Style
+    
+    internal init(checked: Bool, style: Checkmark.Style = .plain) {
+        self.checked = checked
+        self.style = style
+    }
+    
     var body: some View {
-        Image(systemName:imageName)
-            .foregroundColor(checked ? .accentColor : .gray)
-            .font(checked ? baseFont : baseFont.weight(.ultraLight))
+        self.style.viewWhen(self.checked)
     }
 }
 

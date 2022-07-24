@@ -24,12 +24,6 @@ public struct METAR {
     public var observationTime: Date?
     public var rawText: String?
     public var seaLevelPressureMb: Double?
-    public var seaLevelPressureInHG: Double? {
-        get {
-            guard let seaLevelPressureMb = seaLevelPressureMb else { return nil }
-            return 0.02953 * seaLevelPressureMb
-        }
-    }
     public var skyCondition: [SkyCondition] = []
     public var snowInches: Double?
     public var stationID: String?
@@ -61,6 +55,38 @@ public struct METAR {
         self.windDirection = windDirection
         self.windSpeed = windSpeed
         self.windGust = windGust
+    }
+}
+
+// Computed properties
+extension METAR {
+    public var densityAltidueFt: Int? {
+        get {
+            guard let tempC = self.temperature,
+                  let altimeter = self.altimeter,
+                  let elevationFt = elevationFt else {
+                return nil
+            }
+            return approximateDensityAltitude(tempC: tempC,
+                                              altimeter: altimeter,
+                                              fieldElevationFt: Int(elevationFt))
+        }
+    }
+    
+    public var elevationFt: Double? {
+        get {
+            guard let elevationMeters = self.elevationMeters else {
+                return nil
+            }
+            return 3.280839895 * elevationMeters
+        }
+    }
+    
+    public var seaLevelPressureInHG: Double? {
+        get {
+            guard let seaLevelPressureMb = seaLevelPressureMb else { return nil }
+            return 0.02953 * seaLevelPressureMb
+        }
     }
     
     public func ceilingLayer() -> SkyCondition? {

@@ -10,6 +10,43 @@ import SwiftUI
 import AviationWeather
 
 struct METARRow: View {
+    enum Style: String, CaseIterable, Identifiable  {
+        case metar
+        case icons
+        
+        var id: Style {
+            get {
+                return self
+            }
+        }
+        
+        static func defaultStyle() -> Style {
+            return .metar
+        }
+        
+        func description() -> String {
+            let ret: String
+            
+            switch (self) {
+            case .metar:
+                ret = "METAR"
+            case .icons:
+                ret = "Simplified"
+            }
+            
+            return ret
+        }
+        
+        @ViewBuilder func createAssociatedRow(_ stationInfo: StationInfo) -> some View {
+            switch (self) {
+            case .metar:
+                METARRow(stationInfo)
+            case .icons:
+                METARIconRow(stationInfo)
+            }
+        }
+    }
+
     let info: StationInfo
     
     init(_ info: StationInfo) {

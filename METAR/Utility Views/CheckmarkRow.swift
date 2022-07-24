@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct CheckmarkRow <Content : View> : View {
-    let checked : Bool
-    var content : Content
+    let checked: Bool
+    let checkmarkStyle: Checkmark.Style
+    var content: Content
 
     
-    init(checked: Bool, @ViewBuilder content: () -> Content) {
+    init(checked: Bool, checkmarkStyle: Checkmark.Style = .plain, @ViewBuilder content: () -> Content) {
         self.checked = checked
+        self.checkmarkStyle = checkmarkStyle
         self.content = content()
     }
 
     var body: some View {
         HStack(spacing: 10) {
             content
-            Checkmark(checked:checked)
+            Spacer(minLength: 0)
+            Checkmark(checked:checked, style: self.checkmarkStyle)
         }
         .contentShape(Rectangle())
     }
