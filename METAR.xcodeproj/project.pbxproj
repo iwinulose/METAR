@@ -67,6 +67,11 @@
 		7192DD6A28860212007AB42B /* AviationWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 710B4FA327D3104000D88842 /* AviationWeather.framework */; };
 		71B555ED2888964300DA314F /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555EC2888964300DA314F /* Theme.swift */; };
 		71B555EF288898E300DA314F /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555EE288898E300DA314F /* ThemePicker.swift */; };
+		71B555F8288E386800DA314F /* CasePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555F7288E386800DA314F /* CasePicker.swift */; };
+		71B555FA288F848B00DA314F /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555F9288F848B00DA314F /* Appearance.swift */; };
+		71B555FC288F851800DA314F /* AppModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555FB288F851800DA314F /* AppModelDataSource.swift */; };
+		71B555FE288F854500DA314F /* UserDefaultsAppModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555FD288F854500DA314F /* UserDefaultsAppModelDataSource.swift */; };
+		71B55600288F858600DA314F /* SimpleAppModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B555FF288F858600DA314F /* SimpleAppModelDataSource.swift */; };
 		71F8E42A28860FCA00B5BBBC /* Station+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F8E42928860FCA00B5BBBC /* Station+Search.swift */; };
 /* End PBXBuildFile section */
 
@@ -201,6 +206,11 @@
 		7192DD592885E546007AB42B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71B555EC2888964300DA314F /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		71B555EE288898E300DA314F /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
+		71B555F7288E386800DA314F /* CasePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasePicker.swift; sourceTree = "<group>"; };
+		71B555F9288F848B00DA314F /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		71B555FB288F851800DA314F /* AppModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelDataSource.swift; sourceTree = "<group>"; };
+		71B555FD288F854500DA314F /* UserDefaultsAppModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAppModelDataSource.swift; sourceTree = "<group>"; };
+		71B555FF288F858600DA314F /* SimpleAppModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleAppModelDataSource.swift; sourceTree = "<group>"; };
 		71F8E42928860FCA00B5BBBC /* Station+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Station+Search.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,7 +333,11 @@
 		71666149287DBDDC0022C979 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				71B555F9288F848B00DA314F /* Appearance.swift */,
 				71132C7D2517DC860068BDF7 /* AppModel.swift */,
+				71B555FB288F851800DA314F /* AppModelDataSource.swift */,
+				71B555FF288F858600DA314F /* SimpleAppModelDataSource.swift */,
+				71B555FD288F854500DA314F /* UserDefaultsAppModelDataSource.swift */,
 				713EC08428788DAB00B29117 /* WeatherStringFormatter.swift */,
 			);
 			path = Models;
@@ -407,6 +421,7 @@
 			children = (
 				71B555EC2888964300DA314F /* Theme.swift */,
 				71B555EE288898E300DA314F /* ThemePicker.swift */,
+				71B555F7288E386800DA314F /* CasePicker.swift */,
 			);
 			path = "Back Burner";
 			sourceTree = "<group>";
@@ -640,19 +655,24 @@
 				71306573251D718600CF33A0 /* TwoItemRow.swift in Sources */,
 				71132CB2251872A20068BDF7 /* SearchBar.swift in Sources */,
 				71132CA625181F150068BDF7 /* METARRow.swift in Sources */,
+				71B555FA288F848B00DA314F /* Appearance.swift in Sources */,
 				71132CA325181EFA0068BDF7 /* METARList.swift in Sources */,
 				71132CAE25186AE50068BDF7 /* AddAirportSheet.swift in Sources */,
 				713EC093287A01B300B29117 /* CheckmarkRow.swift in Sources */,
 				713EC08F2879F5FA00B29117 /* DismissingView.swift in Sources */,
+				71B55600288F858600DA314F /* SimpleAppModelDataSource.swift in Sources */,
 				713EC08528788DAB00B29117 /* WeatherStringFormatter.swift in Sources */,
 				71925B3C28851FC5003EB8D8 /* METARIntents.intentdefinition in Sources */,
 				713EC0872878A68600B29117 /* LabeledIcon.swift in Sources */,
+				71B555FC288F851800DA314F /* AppModelDataSource.swift in Sources */,
 				71B555ED2888964300DA314F /* Theme.swift in Sources */,
+				71B555FE288F854500DA314F /* UserDefaultsAppModelDataSource.swift in Sources */,
 				713EC09B287CDA1D00B29117 /* AirportPicker.swift in Sources */,
 				71132C7B2517DC6D0068BDF7 /* AppView.swift in Sources */,
 				713EC08B2879D11500B29117 /* METARRowStylePicker.swift in Sources */,
 				71132C6B2517DC310068BDF7 /* METARApp.swift in Sources */,
 				71306577251F169E00CF33A0 /* View+Extensions.swift in Sources */,
+				71B555F8288E386800DA314F /* CasePicker.swift in Sources */,
 				713EC0912879F89300B29117 /* Checkmark.swift in Sources */,
 				716783E7287D0E6700CDD400 /* OnboardingView.swift in Sources */,
 				71132CA925182B0B0068BDF7 /* AirportDetailView.swift in Sources */,

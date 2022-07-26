@@ -15,7 +15,7 @@ public func fetch(_ request: Request, completion:@escaping (Response?, Error?) -
 }
 
 // Per Wikipedia: https://en.wikipedia.org/wiki/Density_altitude#Approximation_formula_for_calculating_the_density_altitude_from_the_pressure_altitude
-public func approximateDensityAltitude(tempC:Double, altimeter: Double, fieldElevationFt: Int) -> Int {
+public func approximateDensityAltitude(tempC: Double, altimeter: Double, fieldElevationFt: Int) -> Int {
     // Formula constants
     let standardPressure = 29.92
     let pressureAltitudeCoefficient = 1.2376
@@ -24,7 +24,7 @@ public func approximateDensityAltitude(tempC:Double, altimeter: Double, fieldEle
     
     let approximatePressureAltitudeDelta = Int((standardPressure - altimeter) * 1000)
     let approximatePressureAltitude = fieldElevationFt + approximatePressureAltitudeDelta
-    let approximateDensityAltitude = Int(pressureAltitudeCoefficient * Double(approximatePressureAltitude)) + Int(outsideAirTemperatureCoefficient * tempC) - altitudeCorrectionConstant
+    let approximateDensityAltitude = Int(pressureAltitudeCoefficient * Double(approximatePressureAltitude) + outsideAirTemperatureCoefficient * tempC - Double(altitudeCorrectionConstant))
     
     return approximateDensityAltitude
 }

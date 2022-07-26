@@ -23,10 +23,19 @@ struct SettingsSheet: View {
                                     selectedRowStyle: self.$model.preferredRowStyle,
                                     stationInfo: self._exampleStationInfo()
                                 )
-                                .navigationTitle("Choose a row style")
+                                    .navigationTitle("Choose a row style")
                             },
                             label: {
-                                TwoItemRow(title:"Row style", value: self.model.preferredRowStyle.description())
+                                TwoItemRow(title:"Row style", value: self.model.preferredRowStyle.description)
+                            }
+                        )
+                        NavigationLink(
+                            destination: {
+                                CasePicker(selected:self.$model.preferredAppearance)
+                                    .navigationTitle("Choose appearance")
+                            },
+                            label: {
+                                TwoItemRow(title:"Appearance", value: self.model.preferredAppearance.description)
                             }
                         )
                     }
@@ -44,6 +53,7 @@ struct SettingsSheet: View {
                 .navigationTitle("Settings")
             }
         }
+        .preferredColorScheme(model.preferredAppearance.toColorScheme())
     }
     
     private func _exampleStationInfo() -> StationInfo {

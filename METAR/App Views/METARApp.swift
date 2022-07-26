@@ -16,6 +16,7 @@ struct METARApp: App {
         WindowGroup {
             AppView()
                 .environmentObject(model)
+                .preferredColorScheme(model.preferredAppearance.toColorScheme())
         }
         .onChange(of: scenePhase) { phase in
             handlePhaseChange(phase)

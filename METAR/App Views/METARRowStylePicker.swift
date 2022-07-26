@@ -24,7 +24,7 @@ struct METARRowStylePicker: View {
                         self.selectedRowStyle = style
                     }
                 }, header: {
-                    Text(style.description())
+                    Text(style.description)
                 })
             }
         }

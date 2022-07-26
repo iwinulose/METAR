@@ -10,7 +10,7 @@ import SwiftUI
 import AviationWeather
 
 struct METARRow: View {
-    enum Style: String, CaseIterable, Identifiable  {
+    enum Style: String, CaseIterable, CustomStringConvertible, Identifiable  {
         case metar
         case icons
         
@@ -24,7 +24,7 @@ struct METARRow: View {
             return .metar
         }
         
-        func description() -> String {
+        var description: String {
             let ret: String
             
             switch (self) {

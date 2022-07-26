@@ -12,6 +12,7 @@ import WidgetKit
 
 import AviationWeather
 
+
 class AppModel: ObservableObject {
     private var dataSource: AppModelDataSource
     @Published private(set) var stationInfo: [StationInfo] = []
@@ -30,15 +31,25 @@ class AppModel: ObservableObject {
     
     var metars: [METAR] = [] {
         willSet {
-            for newMetar in newValue {
-                if let oldMetar = self.metars.first(where: { $0.stationID == newMetar.stationID }),
-                   let oldObservationTime = oldMetar.observationTime,
-                   let newObservationTime = newMetar.observationTime,
-                oldObservationTime != newObservationTime {
+            var shouldReloadTimelines = false
 
-                    WidgetCenter.shared.reloadAllTimelines()
-                    break;
+            if self.metars.isEmpty {
+                shouldReloadTimelines = true
+            }
+            else {
+                for newMetar in newValue {
+                    if let oldMetar = self.metars.first(where: { $0.stationID == newMetar.stationID }),
+                       let oldObservationTime = oldMetar.observationTime,
+                       let newObservationTime = newMetar.observationTime,
+                    oldObservationTime != newObservationTime {
+                        shouldReloadTimelines = true;
+                        break;
+                    }
                 }
+            }
+
+            if shouldReloadTimelines {
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
         didSet {
@@ -46,6 +57,7 @@ class AppModel: ObservableObject {
         }
     }
     
+    //FIXME: All these dataSource passthroughs are boilerplate/repetative. There must be a better way
     var onboardingCompleted: Bool {
         get {
             return self.dataSource.onboardingCompleted
@@ -62,6 +74,16 @@ class AppModel: ObservableObject {
         set {
             self.objectWillChange.send()
             self.dataSource.preferredRowStyle = newValue
+        }
+    }
+    
+    var preferredAppearance: Appearance {
+        get {
+            return self.dataSource.preferredAppearance
+        }
+        set {
+            self.objectWillChange.send()
+            self.dataSource.preferredAppearance = newValue
         }
     }
 
@@ -136,70 +158,5 @@ class AppModel: ObservableObject {
     
     func getStation(_ id:String) -> Station? {
         return self.allStations.first( where: { $0.id == id })
-    }
-}
-
-protocol AppModelDataSource {
-    var stationIDs: [String] {get set}
-    var onboardingCompleted: Bool {get set}
-    var preferredRowStyle: METARRow.Style {get set}
-}
-
-class ArrayAppModelDataSource: AppModelDataSource {
-    var stationIDs: [String]
-    var onboardingCompleted: Bool = false
-    var preferredRowStyle: METARRow.Style
-    
-    init(_ stationIDs:[String] = [], preferredRowStyle: METARRow.Style = METARRow.Style.defaultStyle()) {
-        self.stationIDs = stationIDs
-        self.preferredRowStyle = preferredRowStyle
-    }
-}
-
-class UserDefaultsDataSource: AppModelDataSource {
-    enum Keys: String {
-        case requestedStationIDs
-        case preferredMETARRowStyle
-        case onboardingCompleted
-    }
-    
-    var stationIDs: [String] {
-        get {
-            return UserDefaults.standard.stringArray(forKey:Keys.requestedStationIDs.rawValue) ?? []
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey:Keys.requestedStationIDs.rawValue)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    var preferredRowStyle: METARRow.Style {
-        get {
-            var ret = METARRow.Style.defaultStyle()
-            if let defaultsString = UserDefaults.standard.string(forKey: Keys.preferredMETARRowStyle.rawValue),
-               let defaultsStyle = METARRow.Style(rawValue: defaultsString) {
-                ret = defaultsStyle
-            }
-            else {
-                //FIXME: Logging cleanup (v1 OK)
-                print("Unable to read style from user defaults, returning \(ret.rawValue)")
-            }
-            
-            return ret
-        }
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: Keys.preferredMETARRowStyle.rawValue)
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    var onboardingCompleted: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey:Keys.onboardingCompleted.rawValue)
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey:Keys.onboardingCompleted.rawValue)
-            UserDefaults.standard.synchronize()
-        }
     }
 }
