@@ -346,6 +346,7 @@
 		7166614A287DBE240022C979 /* Utility Views */ = {
 			isa = PBXGroup;
 			children = (
+				71B555F7288E386800DA314F /* CasePicker.swift */,
 				713EC0902879F89300B29117 /* Checkmark.swift */,
 				713EC092287A01B300B29117 /* CheckmarkRow.swift */,
 				713EC08E2879F5FA00B29117 /* DismissingView.swift */,
@@ -421,7 +422,6 @@
 			children = (
 				71B555EC2888964300DA314F /* Theme.swift */,
 				71B555EE288898E300DA314F /* ThemePicker.swift */,
-				71B555F7288E386800DA314F /* CasePicker.swift */,
 			);
 			path = "Back Burner";
 			sourceTree = "<group>";
